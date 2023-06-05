@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">TCA</string>
     <string name = "company_name">TeachersClubApp</string>
+    <string name="Image">logo</string>
 </resources>
