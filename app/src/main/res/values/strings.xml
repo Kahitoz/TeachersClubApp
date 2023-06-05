@@ -2,4 +2,11 @@
     <string name="app_name">TCA</string>
     <string name = "company_name">TeachersClubApp</string>
     <string name="Image">logo</string>
+    <string name="login_signup">Login/Signup</string>
+    <string name="enter_email">Enter Email</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="alternate_login">Alternate Login</string>
+    <string name="google">google</string>
+    <string name="facebook">facebook</string>
+    <string name="message_1">Continue without signing in</string>
 </resources>

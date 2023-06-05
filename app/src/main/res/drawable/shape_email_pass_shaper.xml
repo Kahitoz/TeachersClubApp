@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+
+    <stroke
+        android:width="2dp"
+        android:color="#000000" /> <!-- Replace with your desired border color -->
+
+    <corners android:radius="16dp" /> <!-- Adjust the radius value to change the amount of curve -->
+
+</shape>
