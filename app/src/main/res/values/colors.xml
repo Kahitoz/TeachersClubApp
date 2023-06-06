@@ -11,4 +11,5 @@
     <color name="status_bar">#3F51B5</color>
     <color name="background">#F1D8D8</color>
     <color name="hint">#8B7F7F</color>
+    <color name="boundary1">#B7777979</color>
 </resources>

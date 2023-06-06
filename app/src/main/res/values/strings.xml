@@ -14,4 +14,23 @@
     <string name="home">home</string>
     <string name="notification">notification</string>
     <string name="profile">profile</string>
+    <string name="back_key">back key</string>
+    <string name="job1">Create Job</string>
+    <string name="add_job_1">Company Name</string>
+    <string name="add_job_2">Job Role</string>
+    <string name="add_job_3">Total Openings</string>
+    <string name="add_job_4">Job Type</string>
+    <string name="add_job_5">Location</string>
+    <string name="add_job_6">City</string>
+    <string name="add_job_7">State</string>
+    <string name="add_job_8">Address</string>
+    <string name="add_job_9">Help/Support Email</string>
+    <string name="add_job_10">Additional Info</string>
+    <string name="add_job_11">Job Description</string>
+    <string name="add_job_12">Enter Company Name</string>
+    <string name="add_job_13">Enter Job Role Or Title</string>
+    <string name="add_job_14">Enter complete mailing address</string>
+    <string name="add_job_15">Enter email</string>
+    <string name="add_job_16">Enter job description</string>
+    <string name="add_job_17">Write some additional info</string>
 </resources>
