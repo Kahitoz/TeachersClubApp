@@ -100,7 +100,7 @@
                 android:layout_height="50dp"
                 android:layout_gravity="top|center"
                 android:contentDescription="@string/home"
-                android:src="@drawable/icon_notification"></ImageView>
+                android:src="@drawable/icon_notification" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -124,7 +124,7 @@
                 android:layout_height="50dp"
                 android:layout_gravity="top|center"
                 android:contentDescription="@string/home"
-                android:src="@drawable/icon_person"></ImageView>
+                android:src="@drawable/icon_person" />
 
             <TextView
                 android:layout_width="wrap_content"
