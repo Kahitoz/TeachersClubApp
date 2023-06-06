@@ -33,4 +33,11 @@
     <string name="add_job_15">Enter email</string>
     <string name="add_job_16">Enter job description</string>
     <string name="add_job_17">Write some additional info</string>
+    <string name="card1_db_1">Company Name</string>
+    <string name="card1_db_2">Posted on date</string>
+    <string name="card1_db_3">Job Title</string>
+    <string name="card1_db_5">Location</string>
+    <string name="card1_db_6">10</string>
+    <string name="card1_db_4">View</string>
+    <string name="card1_db_7">Type</string>
 </resources>
