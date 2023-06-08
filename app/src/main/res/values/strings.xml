@@ -40,4 +40,6 @@
     <string name="card1_db_6">10</string>
     <string name="card1_db_4">View</string>
     <string name="card1_db_7">Type</string>
+    <string name="message_sign_in">You are not logged in. Please Sign in by clicking on the button below</string>
+    <string name="button_sign_in">Sign In</string>
 </resources>
