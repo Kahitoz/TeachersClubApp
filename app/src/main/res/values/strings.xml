@@ -43,4 +43,6 @@
     <string name="message_sign_in">You are not logged in. Please Sign in by clicking on the button below</string>
     <string name="button_sign_in">Sign In</string>
     <string name="notify_1">Notification</string>
+    <string name="notify_time_message">Send on xx:xx at xx:xx:xx</string>
+    <string name="notify_message">message</string>
 </resources>
