@@ -45,4 +45,7 @@
     <string name="notify_1">Notification</string>
     <string name="notify_time_message">Send on xx:xx at xx:xx:xx</string>
     <string name="notify_message">message</string>
+    <string name="profile_1">Add Document</string>
+    <string name="profile_bio">Some details about your self</string>
+    <string name="profile_m2">settings</string>
 </resources>
