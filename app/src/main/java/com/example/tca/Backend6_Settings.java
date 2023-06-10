@@ -4,11 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class Backend4_Notification extends AppCompatActivity {
+public class Backend6_Settings extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.ui6_notification);
+        setContentView(R.layout.ui7_settings);
     }
 }

@@ -51,4 +51,5 @@
     <string name="documents">Documents</string>
     <string name="job_posted">Job Posted</string>
     <string name="job_applied">Job Applied</string>
+    <string name="settings_info">View and manage your account for this TCA app this also include settings including privacy, posts, documents and managing accounts</string>
 </resources>
