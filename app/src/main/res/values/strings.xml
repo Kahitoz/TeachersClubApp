@@ -48,4 +48,7 @@
     <string name="profile_1">Add Document</string>
     <string name="profile_bio">Some details about your self</string>
     <string name="profile_m2">settings</string>
+    <string name="documents">Documents</string>
+    <string name="job_posted">Job Posted</string>
+    <string name="job_applied">Job Applied</string>
 </resources>

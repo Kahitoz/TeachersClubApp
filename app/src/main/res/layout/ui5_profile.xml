@@ -142,11 +142,12 @@
     </FrameLayout>
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="80dp"
         android:layout_margin="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/frameLayout"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView">
 
@@ -166,12 +167,12 @@
             </ImageView>
 
             <TextView
+                android:id="@+id/profile_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/profile"
                 android:layout_marginStart="10dp"
+                android:text="@string/profile"
                 android:textColor="@color/heading"
-                android:id="@+id/profile_name"
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/imageView10"
                 app:layout_constraintTop_toTopOf="parent">
@@ -179,29 +180,117 @@
             </TextView>
 
             <TextView
+                android:id="@+id/textView23"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:text="@string/profile_bio"
                 android:textColor="@color/black"
-                android:layout_marginTop="10dp"
                 app:layout_constraintStart_toStartOf="@+id/profile_name"
                 app:layout_constraintTop_toBottomOf="@+id/profile_name" />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/icon_settings"
                 android:contentDescription="@string/profile_m2"
+                android:src="@drawable/icon_settings"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 
+
     </ScrollView>
 
+    <FrameLayout
+        android:id="@+id/frameLayout1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2">
 
+        <FrameLayout
+            android:id="@+id/profile_document"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            tools:ignore="RtlHardcoded">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:text="@string/documents"
+                android:textColor="@color/black">
+
+            </TextView>
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/profile_job_applied"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:text="@string/job_applied"
+                android:textColor="@color/black">
+
+            </TextView>
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/profile_job_posted"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            tools:ignore="RtlHardcoded">
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:text="@string/job_posted"
+                android:textColor="@color/black">
+
+            </TextView>
+        </FrameLayout>
+
+
+    </FrameLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/frameLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frameLayout1" />
+
+    <ProgressBar
+        android:id="@+id/profile_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/recyclerView"
+        app:layout_constraintEnd_toEndOf="@+id/recyclerView"
+        app:layout_constraintStart_toStartOf="@+id/recyclerView"
+        app:layout_constraintTop_toTopOf="@+id/recyclerView">
+
+    </ProgressBar>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
