@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:background="@color/background"
     android:layout_height="match_parent"
-    tools:context=".Backend4_Notification">
+    tools:context=".Backend6_Notification">
 
     <TextView
         android:id="@+id/textView20"

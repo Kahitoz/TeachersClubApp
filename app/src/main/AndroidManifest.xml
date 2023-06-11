@@ -12,14 +12,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TCA"
         tools:targetApi="31">
+        <activity android:name=".Backend8_AddDocument"
+            android:exported="false"/>
         <activity
-            android:name=".Backend6_Settings"
+            android:name=".Backend7_Settings"
             android:exported="false" />
         <activity
             android:name=".Backend5_Profile"
             android:exported="false" />
         <activity
-            android:name=".Backend4_Notification"
+            android:name=".Backend6_Notification"
             android:exported="false" />
         <activity
             android:name=".Backend4_LoginMessage"

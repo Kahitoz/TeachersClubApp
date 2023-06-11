@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:background="@color/background"
     android:layout_height="match_parent"
-    tools:context=".Backend6_Settings">
+    tools:context=".Backend7_Settings">
 
     <ImageView
         android:layout_width="wrap_content"

@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class Backend4_Notification extends AppCompatActivity {
+public class Backend6_Notification extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
