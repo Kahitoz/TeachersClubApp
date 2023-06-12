@@ -60,4 +60,8 @@
     <string name="card_doc_2">Document info comes here</string>
     <string name="card_doc_3">Uploaded on xx:xx:xxxx</string>
     <string name="delete">delete</string>
+    <string name="card6_1">posted on xx:xx:xxxx</string>
+    <string name="card6_2">Job Title</string>
+    <string name="card6_3">Status:open/close</string>
+    <string name="card6_4">close</string>
 </resources>
