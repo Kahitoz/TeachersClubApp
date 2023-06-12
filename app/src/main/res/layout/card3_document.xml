@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:background="@drawable/shape_card_shaper"
+    android:padding="2dp"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/card_doc_download"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/shape_image_view_shaper"
+        android:contentDescription="@string/card_doc_1"
+        android:src="@drawable/icon_download"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/card_doc_title"
+        android:text="@string/card_doc_2"
+        android:textColor="@color/black"
+        android:layout_marginStart="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/card_doc_download"
+        app:layout_constraintStart_toEndOf="@+id/card_doc_download"
+        app:layout_constraintTop_toTopOf="@+id/card_doc_download">
+
+    </TextView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/card_doc_3"
+        android:layout_marginTop="3dp"
+        android:id="@+id/card_doc_date"
+        android:layout_marginStart="2dp"
+        android:textColor="@color/boundary1"
+        app:layout_constraintStart_toStartOf="@+id/card_doc_download"
+        app:layout_constraintTop_toBottomOf="@+id/card_doc_download" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/icon_delete"
+        android:layout_marginEnd="10dp"
+        android:id="@+id/card_doc_delete"
+        app:layout_constraintBottom_toBottomOf="@+id/card_doc_date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/card_doc_date"
+        android:contentDescription="@string/delete" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
