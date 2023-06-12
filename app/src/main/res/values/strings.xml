@@ -70,4 +70,9 @@
     <string name="ui9_1">About Job</string>
     <string name="ui10_1">Job Applicants</string>
     <string name="ui11_message">Message</string>
+    <string name="card6_2">View Profile</string>
+    <string name="card6_3">Turn on chat window</string>
+    <string name="card6_4">Accept</string>
+    <string name="card6_5">Reject</string>
+    <string name="card6_6">Reset</string>
 </resources>
