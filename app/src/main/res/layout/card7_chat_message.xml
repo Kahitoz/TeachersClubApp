@@ -47,6 +47,7 @@
         android:layout_width="61dp"
         android:layout_height="21dp"
         android:text="@string/card7_4"
+        android:id="@+id/card7_message"
         android:layout_marginTop="10dp"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="@+id/card7_image"
