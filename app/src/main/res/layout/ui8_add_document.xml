@@ -4,6 +4,107 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".Backend8_AddDocument">
+
+    <ImageView
+        android:id="@+id/document_back"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        android:contentDescription="@string/back_key"
+        android:src="@drawable/icon_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </ImageView>
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/document_1"
+        android:textColor="@color/heading"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/document_back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/document_back">
+
+    </TextView>
+
+    <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:contentDescription="@string/Image"
+        android:src="@drawable/icon_logo"
+        app:layout_constraintBottom_toBottomOf="@+id/textView4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView4" />
+
+    <TextView
+        android:id="@+id/textView24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+
+        android:text="@string/document_2"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/document_back" />
+
+    <EditText
+        android:id="@+id/document_description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/shape_email_pass_shaper"
+        android:drawableStart="@drawable/icon_info"
+        android:drawablePadding="4dp"
+        android:padding="7dp"
+        app:layout_constraintEnd_toStartOf="@+id/imageView11"
+        app:layout_constraintStart_toStartOf="@+id/textView24"
+        app:layout_constraintTop_toBottomOf="@+id/textView24"
+        android:autofillHints=""
+        android:inputType="textLongMessage"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/document_description"
+        android:layout_marginTop="20dp"
+        android:background="@color/purple_200"
+        android:id="@+id/document_upload"
+        android:padding="4dp"
+        android:text="@string/document_3"
+        android:drawableStart="@drawable/icon_document"
+        app:layout_constraintStart_toStartOf="@+id/document_description"
+        app:layout_constraintTop_toBottomOf="@+id/document_description" />
+
+    <TextView
+        android:id="@+id/textView25"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/document_4"
+        android:textColor="@color/boundary1"
+        app:layout_constraintEnd_toEndOf="@+id/document_upload"
+        app:layout_constraintStart_toStartOf="@+id/document_upload"
+        app:layout_constraintTop_toBottomOf="@+id/document_upload" />
+
+    <ProgressBar
+        android:id="@+id/document_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView25">
+
+    </ProgressBar>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
