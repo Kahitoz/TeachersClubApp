@@ -78,7 +78,17 @@
 
     </TextView>
 
-
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/card4_3"
+        android:textColor="@color/blue"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintEnd_toStartOf="@+id/card5_view"
+        app:layout_constraintHorizontal_bias="0.483"
+        app:layout_constraintStart_toEndOf="@+id/card5_status"
+        app:layout_constraintTop_toTopOf="@+id/card5_status" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

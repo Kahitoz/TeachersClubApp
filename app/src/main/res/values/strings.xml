@@ -66,4 +66,5 @@
     <string name="card5_4">close</string>
     <string name="card4_2">Status:Not Known</string>
     <string name="card4_1">Applied on xx:xx:xxxx</string>
+    <string name="card4_3">message</string>
 </resources>
