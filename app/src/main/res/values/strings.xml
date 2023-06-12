@@ -77,4 +77,5 @@
     <string name="card6_6">Reset</string>
     <string name="card7_2">sent on xx:xx:xxxx</string>
     <string name="card7_4">message</string>
+    <string name="ui0_1">Signing in</string>
 </resources>
