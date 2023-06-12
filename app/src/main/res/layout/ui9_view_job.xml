@@ -8,6 +8,17 @@
     tools:context=".Backend3_AddJob"
     tools:ignore="ExtraText">
 
+    <ProgressBar
+        android:id="@+id/ui9_progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </ProgressBar>
+
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="30dp"
@@ -24,7 +35,7 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/job1"
+        android:text="@string/ui9_1"
         android:textColor="@color/heading"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -76,19 +87,16 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
-                android:autofillHints=""
                 android:background="@drawable/shape_additional_edit_text_shaper"
-                android:drawableStart="@drawable/icon_sample1"
                 android:drawablePadding="10dp"
-                android:hint="@string/add_job_12"
-                android:inputType="text"
                 android:padding="5dp"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/textView5"
-                app:layout_constraintTop_toBottomOf="@+id/textView5" />
+                app:layout_constraintTop_toBottomOf="@+id/textView5"
+                app:drawableStartCompat="@drawable/icon_sample1" />
 
             <TextView
                 android:id="@+id/textView6"
@@ -110,12 +118,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
-                android:autofillHints=""
                 android:background="@drawable/shape_additional_edit_text_shaper"
-                android:drawableStart="@drawable/icon_add_role"
                 android:drawablePadding="10dp"
-                android:hint="@string/add_job_13"
-                android:inputType="text"
                 android:padding="5dp"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
@@ -143,7 +147,6 @@
                 android:layout_height="wrap_content"
                 android:autofillHints=""
                 android:background="@drawable/shape_additional_edit_text_shaper"
-                android:inputType="number"
                 android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="@+id/textView7"
                 app:layout_constraintEnd_toEndOf="@+id/spinner_1"
@@ -258,10 +261,7 @@
                 android:layout_marginEnd="10dp"
                 android:autofillHints=""
                 android:background="@drawable/shape_additional_edit_text_shaper"
-                android:drawableStart="@drawable/icon_address"
                 android:drawablePadding="10dp"
-                android:hint="@string/add_job_14"
-                android:inputType="text"
                 android:padding="5dp"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
@@ -292,17 +292,15 @@
                 android:layout_marginEnd="10dp"
                 android:autofillHints=""
                 android:background="@drawable/shape_additional_edit_text_shaper"
-                android:drawableStart="@drawable/icon_email"
                 android:drawablePadding="10dp"
-                android:hint="@string/add_job_15"
-                android:inputType="textEmailAddress"
                 android:padding="5dp"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/textView10"
-                app:layout_constraintTop_toBottomOf="@+id/textView10" />
+                app:layout_constraintTop_toBottomOf="@+id/textView10"
+                app:drawableStartCompat="@drawable/icon_email" />
 
             <TextView
                 android:id="@+id/textView8"
@@ -340,17 +338,15 @@
                 android:layout_marginEnd="10dp"
                 android:autofillHints=""
                 android:background="@drawable/shape_additional_edit_text_shaper"
-                android:drawableStart="@drawable/icon_info"
                 android:drawablePadding="10dp"
-                android:hint="@string/add_job_17"
-                android:inputType="text"
                 android:padding="5dp"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/textView8"
-                app:layout_constraintTop_toBottomOf="@+id/textView8" />
+                app:layout_constraintTop_toBottomOf="@+id/textView8"
+                app:drawableStartCompat="@drawable/icon_info" />
 
             <TextView
                 android:id="@+id/name_description"
@@ -360,17 +356,15 @@
                 android:layout_marginEnd="10dp"
                 android:autofillHints=""
                 android:background="@drawable/shape_additional_edit_text_shaper"
-                android:drawableStart="@drawable/icon_info"
                 android:drawablePadding="10dp"
-                android:hint="@string/add_job_16"
-                android:inputType="text"
                 android:padding="5dp"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/textView11"
-                app:layout_constraintTop_toBottomOf="@+id/textView11" />
+                app:layout_constraintTop_toBottomOf="@+id/textView11"
+                app:drawableStartCompat="@drawable/icon_info" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

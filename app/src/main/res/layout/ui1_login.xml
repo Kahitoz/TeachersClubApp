@@ -39,7 +39,7 @@
 
     </TextView>
 
-    <EditText
+    <TextView
         android:id="@+id/editText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -58,9 +58,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView">
 
-    </EditText>
+    </TextView>
 
-    <EditText
+    <TextView
         android:id="@+id/editText2"
         android:layout_width="0dp"
         android:background="@drawable/shape_email_pass_shaper"
