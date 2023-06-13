@@ -29,6 +29,7 @@ public class Backend1_Login extends AppCompatActivity {
         b1_email = findViewById(R.id.ui1_email);
         b1_password = findViewById(R.id.ui1_password);
         b1_login = findViewById(R.id.ui1_login_signup);
+        b1_skip = findViewById(R.id.ui1_skip);
         auth = FirebaseAuth.getInstance();
 
         b1_login.setOnClickListener(new View.OnClickListener() {
