@@ -78,4 +78,7 @@
     <string name="card7_2">sent on xx:xx:xxxx</string>
     <string name="card7_4">message</string>
     <string name="ui0_1">Signing in</string>
+    <string name="ui12_1">Update</string>
+    <string name="ui12_2">Message</string>
+    <string name="ui12_3">update</string>
 </resources>
