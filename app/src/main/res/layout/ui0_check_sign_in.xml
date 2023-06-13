@@ -15,7 +15,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
     </ProgressBar>
 
     <TextView
@@ -28,7 +27,6 @@
         app:layout_constraintEnd_toEndOf="@+id/ui0_progress"
         app:layout_constraintStart_toStartOf="@+id/ui0_progress"
         app:layout_constraintTop_toBottomOf="@+id/ui0_progress">
-
     </TextView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
