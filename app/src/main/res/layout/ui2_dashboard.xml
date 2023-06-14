@@ -85,6 +85,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
+                android:id="@+id/navbar_icon_home"
                 android:layout_gravity="top|center"
                 android:contentDescription="@string/home"
                 android:src="@drawable/icon_home" />
@@ -94,6 +95,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
                 android:text="@string/home"
+                android:id="@+id/navbar_text_home"
                 android:textColor="@color/black">
 
             </TextView>
