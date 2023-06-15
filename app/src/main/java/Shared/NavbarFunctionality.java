@@ -1,5 +1,6 @@
 package Shared;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.View;
@@ -32,10 +33,29 @@ public class NavbarFunctionality {
         if(value){
             Context context = backend2_dashboard.getApplicationContext();
             Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+            color_selected(icon_1,text_1);
+            notification_1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                   context.startActivity(new Intent(context,Backend6_Notification.class));
+                }
+            });
 
+            profile_1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    context.startActivity(new Intent(context, Backend5_Profile.class));
+                }
+            });
         }
     }
-    public void color(){
+    @SuppressLint("ResourceAsColor")
+    public void color_selected(ImageView image , TextView text){
+        image.setColorFilter(R.color.button_1);
+        text.setTextColor(R.color.button_1);
+    }
+
+    public void activity_handler(Context context ){
 
     }
 }
