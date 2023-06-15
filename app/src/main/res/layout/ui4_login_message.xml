@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/icon_back"
-        android:id="@+id/back_button"
+        android:id="@+id/ui4_Back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:contentDescription="@string/back_key">
@@ -26,7 +26,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.35">
+        app:layout_constraintVertical_bias="0.35"
+        android:contentDescription="@string/company_name">
 
     </ImageView>
 
@@ -45,7 +46,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:id="@+id/button_sign_in"
+        android:id="@+id/ui4_SignIn"
         android:backgroundTint="@color/button_1"
         android:text="@string/button_sign_in"
         android:textColor="@color/white"
