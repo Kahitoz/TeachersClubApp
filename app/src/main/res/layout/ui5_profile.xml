@@ -28,7 +28,7 @@
         app:layout_constraintTop_toTopOf="@+id/imageView" />
 
     <FrameLayout
-        android:id="@+id/add_job"
+        android:id="@+id/ui5_add_document"
         android:layout_width="125dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
@@ -38,8 +38,8 @@
 
 
         <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="34dp"
+            android:layout_height="match_parent"
             android:layout_gravity="left"
             android:contentDescription="@string/description_2"
             android:src="@drawable/icon_document"
@@ -195,6 +195,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/profile_m2"
+                android:id="@+id/ui5_settings"
                 android:src="@drawable/icon_settings"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
