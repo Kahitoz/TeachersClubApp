@@ -78,6 +78,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:layout_gravity="top|center"
+                android:id="@+id/navbar_icon_notify"
                 android:contentDescription="@string/home"
                 android:src="@drawable/icon_notification" />
 
@@ -85,6 +86,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
+                android:id="@+id/navbar_text_notify"
                 android:text="@string/notification"
                 android:textColor="@color/black">
 

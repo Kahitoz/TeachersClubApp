@@ -12,11 +12,12 @@
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:src="@drawable/icon_back"
-        android:id="@+id/back"
+        android:id="@+id/ui7_Back"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/back_key" />
 
     <TextView
         android:id="@+id/textView15"
@@ -28,9 +29,9 @@
         android:textColor="@color/heading"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/back"
-        app:layout_constraintStart_toEndOf="@+id/back"
-        app:layout_constraintTop_toTopOf="@+id/back">
+        app:layout_constraintBottom_toBottomOf="@+id/ui7_Back"
+        app:layout_constraintStart_toEndOf="@+id/ui7_Back"
+        app:layout_constraintTop_toTopOf="@+id/ui7_Back">
 
     </TextView>
 
