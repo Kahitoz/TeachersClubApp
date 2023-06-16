@@ -17,7 +17,7 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
-public class Form3_AddJob {
+public class Backend3_Form_addJob {
     private final Spinner stateSpinner;
     private final Spinner jobTypeSpinner;
     private final EditText companyEditText;
@@ -33,9 +33,9 @@ public class Form3_AddJob {
     private final FirebaseFirestore database;
     private final Context context;
 
-    public Form3_AddJob(Spinner stateSpinner, Spinner jobTypeSpinner, EditText companyEditText, EditText roleEditText,
-                        EditText openingsEditText, EditText cityEditText, EditText addressEditText, EditText emailEditText,
-                        EditText descriptionEditText, EditText infoEditText, Context context) {
+    public Backend3_Form_addJob(Spinner stateSpinner, Spinner jobTypeSpinner, EditText companyEditText, EditText roleEditText,
+                                EditText openingsEditText, EditText cityEditText, EditText addressEditText, EditText emailEditText,
+                                EditText descriptionEditText, EditText infoEditText, Context context) {
         this.stateSpinner = stateSpinner;
         this.jobTypeSpinner = jobTypeSpinner;
         this.companyEditText = companyEditText;
@@ -107,7 +107,7 @@ public class Form3_AddJob {
             String jobType = jobTypeSpinner.getSelectedItem().toString();
             String company = companyEditText.getText().toString();
             String role = roleEditText.getText().toString();
-            int openings = Integer.parseInt(openingsEditText.getText().toString());
+            String openings = openingsEditText.getText().toString();
             String city = cityEditText.getText().toString();
             String address = addressEditText.getText().toString();
             String email = emailEditText.getText().toString();

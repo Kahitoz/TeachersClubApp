@@ -192,15 +192,15 @@
 
             <TextView
                 android:id="@+id/textView14"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="21dp"
+                android:layout_height="15dp"
                 android:text="@string/add_job_6"
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/spinner_state"
-
-                app:layout_constraintStart_toStartOf="@+id/name_job_type"
+                android:layout_marginStart="15dp"
+                app:layout_constraintStart_toEndOf="@+id/spinner_state"
                 app:layout_constraintTop_toTopOf="@+id/spinner_state">
 
             </TextView>

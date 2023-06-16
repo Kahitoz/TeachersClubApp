@@ -2,7 +2,6 @@ package com.example.tca;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -15,20 +14,14 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import Shared.Form3_AddJob;
+import Shared.Backend3_Form_addJob;
 
 public class Backend3_AddJob extends AppCompatActivity {
 
     ImageView b3_Back;
     FirebaseAuth auth;
-    FirebaseFirestore firestore;
-
     Spinner stateSpinner, jobTypeSpinner;
     EditText companyEditText, roleEditText, openingsEditText, cityEditText, addressEditText, emailEditText, descriptionEditText, infoEditText;
     Button createJobButton;
@@ -52,9 +45,8 @@ public class Backend3_AddJob extends AppCompatActivity {
         jobTypeSpinner = findViewById(R.id.name_job_type);
 
         auth = FirebaseAuth.getInstance();
-        firestore = FirebaseFirestore.getInstance();
 
-        Form3_AddJob form3_addJob = new Form3_AddJob(stateSpinner, jobTypeSpinner, companyEditText, roleEditText,
+        Backend3_Form_addJob backend3_formattedJob = new Backend3_Form_addJob(stateSpinner, jobTypeSpinner, companyEditText, roleEditText,
                 openingsEditText, cityEditText, addressEditText, emailEditText, descriptionEditText, infoEditText, this);
 
         String[] indianStates = {"Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh", "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana", "Tripura", "Uttar Pradesh", "Uttarakhand", "West Bengal"};
@@ -78,8 +70,8 @@ public class Backend3_AddJob extends AppCompatActivity {
         createJobButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (form3_addJob.validate_form()) {
-                    form3_addJob.upload_job_data();
+                if (backend3_formattedJob.validate_form()) {
+                    backend3_formattedJob.upload_job_data();
                 }
             }
         });
@@ -91,7 +83,7 @@ public class Backend3_AddJob extends AppCompatActivity {
         try {
             FirebaseUser currentUser = auth.getCurrentUser();
             if (currentUser == null) {
-                // User is not signed in, redirect to login activity
+                // User has not signed in, redirect to login activity
                 Intent intent = new Intent(this, Backend4_LoginMessage.class);
                 startActivity(intent);
                 finish();
