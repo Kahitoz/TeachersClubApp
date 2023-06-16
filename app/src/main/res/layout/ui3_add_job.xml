@@ -47,9 +47,10 @@
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/name_create_job"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/ui3_Back"
         app:layout_constraintTop_toBottomOf="@+id/textView4">
 
@@ -62,6 +63,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/add_job_1"
+
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 android:textStyle="bold"
@@ -70,7 +72,7 @@
 
             </TextView>
 
-            <TextView
+            <EditText
                 android:id="@+id/name_company"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -104,7 +106,7 @@
 
             </TextView>
 
-            <TextView
+            <EditText
                 android:id="@+id/name_role"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -137,17 +139,17 @@
                 app:layout_constraintTop_toBottomOf="@+id/name_role" />
 
 
-            <TextView
+            <EditText
                 android:id="@+id/name_openings"
-                android:layout_width="0dp"
+                android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:autofillHints=""
                 android:background="@drawable/shape_additional_edit_text_shaper"
                 android:inputType="number"
                 android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="@+id/textView7"
-                app:layout_constraintEnd_toEndOf="@+id/spinner_1"
-                app:layout_constraintStart_toStartOf="@+id/spinner_1" />"
+                app:layout_constraintStart_toStartOf="@+id/name_job_type"
+                app:layout_constraintTop_toTopOf="@+id/textView7" />"
 
             <TextView
                 android:id="@+id/textView12"
@@ -164,7 +166,7 @@
             </TextView>
 
             <Spinner
-                android:id="@+id/spinner_1"
+                android:id="@+id/name_job_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/shape_additional_edit_text_shaper"
@@ -196,27 +198,36 @@
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/textView15"
-                app:layout_constraintStart_toStartOf="@+id/spinner_1"
-                app:layout_constraintTop_toTopOf="@+id/textView15"
-                app:layout_constraintVertical_bias="0.0">
+                app:layout_constraintBottom_toBottomOf="@+id/spinner_state"
+
+                app:layout_constraintStart_toStartOf="@+id/name_job_type"
+                app:layout_constraintTop_toTopOf="@+id/spinner_state">
 
             </TextView>
 
-            <Spinner
-                android:id="@+id/spinner_city"
+            <EditText
+                android:id="@+id/name_add_city"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="48dp"
                 android:background="@drawable/shape_additional_edit_text_shaper"
-                app:layout_constraintBottom_toBottomOf="@+id/textView15"
-                app:layout_constraintStart_toEndOf="@+id/textView14" />
+                android:hint="add city"
+                android:padding="3dp"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/textView14"
+                app:layout_constraintStart_toEndOf="@+id/textView14"
+                app:layout_constraintTop_toTopOf="@+id/textView14"
+                app:layout_constraintVertical_bias="0.0">
+
+            </EditText>
 
             <TextView
                 android:id="@+id/textView15"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+
+                android:layout_marginTop="8dp"
                 android:text="@string/add_job_7"
                 android:textColor="@color/black"
                 android:textSize="15sp"
@@ -230,11 +241,12 @@
                 android:id="@+id/spinner_state"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="15dp"
                 android:background="@drawable/shape_additional_edit_text_shaper"
                 app:layout_constraintBottom_toBottomOf="@+id/textView15"
                 app:layout_constraintStart_toEndOf="@+id/textView15"
-                app:layout_constraintTop_toTopOf="@+id/textView15" />
+                app:layout_constraintTop_toTopOf="@+id/textView15"
+                app:layout_constraintVertical_bias="0.0" />
 
             <TextView
                 android:id="@+id/textView13"
@@ -250,7 +262,7 @@
 
             </TextView>
 
-            <TextView
+            <EditText
                 android:id="@+id/name_address"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -284,7 +296,7 @@
 
             </TextView>
 
-            <TextView
+            <EditText
                 android:id="@+id/name_email"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -332,7 +344,7 @@
 
             </TextView>
 
-            <TextView
+            <EditText
                 android:id="@+id/name_info"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -352,7 +364,7 @@
                 app:layout_constraintStart_toStartOf="@+id/textView8"
                 app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
-            <TextView
+            <EditText
                 android:id="@+id/name_description"
                 android:layout_width="0dp"
                 android:layout_height="100dp"
@@ -376,8 +388,16 @@
 
     </ScrollView>
 
-
-
+    <Button
+        android:id="@+id/name_create_job"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/blue"
+        android:text="create job"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
