@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,6 +23,7 @@ TextView b9_company_name, b9_job_role, b9_total_openings, b9_job_type, b9_job_st
 ProgressBar b9_progress_bar;
 Button b9_job_request;
 String document_id, user_id;
+ImageView b9_Back;
 
 FirebaseAuth Auth;
 FirebaseFirestore database;
@@ -42,6 +44,7 @@ FirebaseFirestore database;
         b9_progress_bar = findViewById(R.id.ui9_progressBar);
         b9_job_request = findViewById(R.id.name_create_job);
         b9_job_description = findViewById(R.id.name_description);
+        b9_Back = findViewById(R.id.imageView4);
         Auth = FirebaseAuth.getInstance();
         database = FirebaseFirestore.getInstance();
 
@@ -57,7 +60,7 @@ FirebaseFirestore database;
             Toast.makeText(getApplicationContext(), "Some Error Occurred", Toast.LENGTH_SHORT).show();
         }
         else{
-            Backend9_Data_Retrieval backend9_data_retrieval = new Backend9_Data_Retrieval(this, b9_company_name, b9_job_role, b9_total_openings, b9_job_type, b9_job_state, b9_job_city, b9_job_address, b9_job_email, b9_job_info, b9_progress_bar, database, document_id, user_id, b9_job_description);
+            Backend9_Data_Retrieval backend9_data_retrieval = new Backend9_Data_Retrieval(this,Auth , b9_company_name, b9_job_role, b9_total_openings, b9_job_type, b9_job_state, b9_job_city, b9_job_address, b9_job_email, b9_job_info, b9_progress_bar, database, document_id, user_id, b9_job_description);
             backend9_data_retrieval.fetch_and_set_data();
         }
 
@@ -72,6 +75,16 @@ FirebaseFirestore database;
                 }
             }
         });
+
+        b9_Back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),Backend2_Dashboard.class));
+                finish();
+            }
+        });
+
+
 
     }
 }

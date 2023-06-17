@@ -1,26 +1,39 @@
 package Shared;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+
+import com.example.tca.Backend5_Profile;
+import com.example.tca.Backend7_Settings;
 import com.example.tca.Backend9_ViewJob;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.HashMap;
+import java.util.Objects;
+
 public class Backend9_Data_Retrieval {
-    private TextView b9_company_name, b9_job_role, b9_total_openings, b9_job_type, b9_job_state, b9_job_city, b9_job_address, b9_job_email, b9_job_info, b9_job_description;
-    private ProgressBar b9_progress_bar;
-    private FirebaseFirestore database;
+    private final TextView b9_company_name, b9_job_role, b9_total_openings, b9_job_type, b9_job_state, b9_job_city, b9_job_address, b9_job_email, b9_job_info, b9_job_description;
+    private final ProgressBar b9_progress_bar;
+    private final FirebaseFirestore database;
 
-    private String document_id, user_id;
-    private Context context;
+    private final String document_id, user_id;
+    private final Context context;
+    private final FirebaseAuth auth;
 
-    public Backend9_Data_Retrieval(Context context,TextView b9_company_name, TextView b9_job_role, TextView b9_total_openings, TextView b9_job_type, TextView b9_job_state, TextView b9_job_city, TextView b9_job_address, TextView b9_job_email, TextView b9_job_info, ProgressBar b9_progress_bar, FirebaseFirestore database, String document_id, String user_id, TextView b9_job_description) {
+    public Backend9_Data_Retrieval(Context context, FirebaseAuth auth, TextView b9_company_name, TextView b9_job_role, TextView b9_total_openings, TextView b9_job_type, TextView b9_job_state, TextView b9_job_city, TextView b9_job_address, TextView b9_job_email, TextView b9_job_info, ProgressBar b9_progress_bar, FirebaseFirestore database, String document_id, String user_id, TextView b9_job_description) {
         this.b9_company_name = b9_company_name;
         this.b9_job_role = b9_job_role;
         this.b9_total_openings = b9_total_openings;
@@ -36,6 +49,7 @@ public class Backend9_Data_Retrieval {
         this.user_id = user_id;
         this.context = context;
         this.b9_job_description = b9_job_description;
+        this.auth = auth;
     }
 
     public void fetch_and_set_data() {
@@ -75,5 +89,82 @@ public class Backend9_Data_Retrieval {
                     // Hide the progress bar after data retrieval
                     b9_progress_bar.setVisibility(View.GONE);
                 });
+    }
+    public void check_user_data(){
+        String doc_id = document_id.toString().trim();
+
+        database.collection("users").document(Objects.requireNonNull(auth.getUid())).collection("jobApplied").document(doc_id).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                DocumentSnapshot documentSnapshot = task.getResult();
+                if(task.isSuccessful()&&documentSnapshot.exists()){
+                    Toast.makeText(context, "Already applied for this job", Toast.LENGTH_LONG).show();
+                }else{
+                    database.collection("users").document(Objects.requireNonNull(auth.getUid())).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                            if(task.isSuccessful()){
+                                DocumentSnapshot documentSnapshot = task.getResult();
+                                if(documentSnapshot!=null){
+                                    String name = documentSnapshot.getString("name");
+                                    String city = documentSnapshot.getString("city");
+                                    String state = documentSnapshot.getString("state");
+
+                                    assert name != null;
+                                    if(name.length() == 0 && city.length() == 0 && state.length() == 0){
+                                        Toast.makeText(context, "Complete your profile", Toast.LENGTH_LONG).show();
+                                        context.startActivity(new Intent(context, Backend7_Settings.class));
+                                    }
+                                    else{
+                                        HashMap<String, Object> data = new HashMap<>();
+                                        data.put("user_id", auth.getUid());
+                                        database.collection("users").document(user_id).collection("jobPosted").document(doc_id).collection("Applied_Job").add(data).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<DocumentReference> task) {
+                                                if(task.isSuccessful()){
+                                                    HashMap<String, Object> notify = new HashMap<>();
+                                                    notify.put("message", "You have applied for a new job");
+                                                    notify.put("id", doc_id);
+
+                                                    HashMap<String, Object> job_id = new HashMap<>();
+                                                    job_id.put("id", doc_id);
+
+                                                    database.collection("users").document(auth.getUid()).collection("jobApplied").document(doc_id).set(job_id).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                        @Override
+                                                        public void onComplete(@NonNull Task<Void> task) {
+                                                            if(task.isSuccessful()){
+
+                                                            }
+                                                            else{
+                                                                Toast.makeText(context, "Failed", Toast.LENGTH_LONG).show();
+                                                            }
+                                                        }
+                                                    });
+                                                    database.collection("users").document(auth.getUid()).collection("notification").add(notify).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                                                        @Override
+                                                        public void onComplete(@NonNull Task<DocumentReference> task) {
+                                                            if(task.isSuccessful()){
+                                                                Toast.makeText(context, "notification sent", Toast.LENGTH_SHORT).show();
+                                                            }else{
+                                                                Toast.makeText(context, "Failed to give notification", Toast.LENGTH_SHORT).show();
+                                                            }
+                                                        }
+                                                    });
+                                                    Toast.makeText(context, "You have successfully applied for the job", Toast.LENGTH_LONG).show();
+                                                    context.startActivity(new Intent(context, Backend5_Profile.class));
+                                                }else{
+                                                    Toast.makeText(context, "Error", Toast.LENGTH_LONG).show();
+                                                }
+                                            }
+                                        });
+                                    }
+                                }
+                            }
+                        }
+                    });
+                }
+            }
+        });
+
     }
 }
