@@ -129,6 +129,7 @@ public class Backend3_Form_addJob {
             jobMap.put("info", info);
             jobMap.put("status", "open");
             jobMap.put("date", date);
+            jobMap.put("user_id", auth.getUid());
 
             CollectionReference jobPostedRef = database.collection("users").document(userId).collection("jobPosted");
             jobPostedRef.add(jobMap)
