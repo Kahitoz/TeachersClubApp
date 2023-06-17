@@ -1,10 +1,25 @@
-package Shared;
+package Shared.Backen2_Utils;
 
 public class Backend2_GetAndSet {
-    String address, city, company, date, description, email, info, jobType, openings, role, state, status;
+    String address, city, company, date, description, email, info, jobType, openings, role, state, status, doc_id, user_id;
 
     public String getAddress() {
         return address;
+    }
+
+    public String getUser_id() {
+        return user_id;
+    }
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
+    }
+
+    public String getDoc_id() {
+        return doc_id;
+    }
+
+    public void setDoc_id(String doc_id) {
+        this.doc_id = doc_id;
     }
 
     public void setAddress(String address) {

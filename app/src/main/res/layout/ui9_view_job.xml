@@ -58,9 +58,10 @@
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/name_create_job"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView4"
         app:layout_constraintTop_toBottomOf="@+id/textView4">
 
@@ -93,10 +94,10 @@
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
                 android:textSize="14sp"
+                app:drawableStartCompat="@drawable/icon_sample1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/textView5"
-                app:layout_constraintTop_toBottomOf="@+id/textView5"
-                app:drawableStartCompat="@drawable/icon_sample1" />
+                app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
             <TextView
                 android:id="@+id/textView6"
@@ -166,7 +167,7 @@
 
             </TextView>
 
-            <Spinner
+            <TextView
                 android:id="@+id/spinner_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -175,7 +176,7 @@
                 app:layout_constraintStart_toEndOf="@+id/textView12"
                 app:layout_constraintTop_toTopOf="@+id/textView12">
 
-            </Spinner>
+            </TextView>
 
             <TextView
                 android:id="@+id/textView9"
@@ -206,7 +207,7 @@
 
             </TextView>
 
-            <Spinner
+            <TextView
                 android:id="@+id/spinner_city"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -229,7 +230,7 @@
 
             </TextView>
 
-            <Spinner
+            <TextView
                 android:id="@+id/spinner_state"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -297,10 +298,10 @@
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
                 android:textSize="14sp"
+                app:drawableStartCompat="@drawable/icon_email"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/textView10"
-                app:layout_constraintTop_toBottomOf="@+id/textView10"
-                app:drawableStartCompat="@drawable/icon_email" />
+                app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
             <TextView
                 android:id="@+id/textView8"
@@ -343,15 +344,15 @@
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
                 android:textSize="14sp"
+                app:drawableStartCompat="@drawable/icon_info"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/textView8"
-                app:layout_constraintTop_toBottomOf="@+id/textView8"
-                app:drawableStartCompat="@drawable/icon_info" />
+                app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
             <TextView
                 android:id="@+id/name_description"
                 android:layout_width="0dp"
-                android:layout_height="100dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:autofillHints=""
@@ -361,14 +362,25 @@
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
                 android:textSize="14sp"
+                app:drawableStartCompat="@drawable/icon_info"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/textView11"
-                app:layout_constraintTop_toBottomOf="@+id/textView11"
-                app:drawableStartCompat="@drawable/icon_info" />
+                app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
+
+    <Button
+        android:id="@+id/name_create_job"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/blue"
+        android:text="Send Request"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 

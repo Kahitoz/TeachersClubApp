@@ -15,8 +15,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 
-import Shared.Backend2_Adapter;
-import Shared.Backend2_DataRetriever;
+import Shared.Backen2_Utils.Backend2_Adapter;
+import Shared.Backen2_Utils.Backend2_DataRetriever;
 import Shared.NavbarFunctionality;
 
 public class Backend2_Dashboard extends AppCompatActivity {

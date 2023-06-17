@@ -1,6 +1,7 @@
-package Shared;
+package Shared.Backen2_Utils;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,15 +10,16 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.tca.Backend9_ViewJob;
 import com.example.tca.R;
 
 import java.util.List;
 
 
 public class Backend2_Adapter extends RecyclerView.Adapter<Backend2_Adapter.CardViewHolder> {
-    private final List<Backend2_GetAndSet> dataList;
+    public static List<Backend2_GetAndSet> dataList;
     public Backend2_Adapter(List<Backend2_GetAndSet> dataList) {
-        this.dataList = dataList;
+        Backend2_Adapter.dataList = dataList;
     }
     @NonNull
     @Override
@@ -43,17 +45,30 @@ public class Backend2_Adapter extends RecyclerView.Adapter<Backend2_Adapter.Card
         return dataList.size();
     }
     public static class CardViewHolder extends RecyclerView.ViewHolder {
-        TextView b2_company_name, b2_date, b2_jobTitle, b2_total_openings, b2_location, b2_job_type;
+        TextView b2_company_name, b2_date, b2_jobTitle, b2_total_openings, b2_location, b2_job_type, b2_view;
         public CardViewHolder(@NonNull View itemView) {
             super(itemView);
-
                   b2_company_name = itemView.findViewById(R.id.view_name);
                   b2_date =itemView.findViewById(R.id.view_date);
                   b2_jobTitle =itemView.findViewById(R.id.view_title);
                   b2_total_openings =itemView.findViewById(R.id.view_openings);
                   b2_location  =itemView.findViewById(R.id.view_location);
                   b2_job_type =itemView.findViewById(R.id.view_type);
+                  b2_view = itemView.findViewById(R.id.view_view);
 
+                  b2_view.setOnClickListener(new View.OnClickListener() {
+                      @Override
+                      public void onClick(View v) {
+                          int position = getAdapterPosition();
+                          Backend2_GetAndSet item = dataList.get(position);
+                          String document_id = item.getDoc_id();
+                          String user_id = item.getUser_id();
+                          Intent intent = new Intent(v.getContext(), Backend9_ViewJob.class);
+                          intent.putExtra("document_id", document_id);
+                          intent.putExtra("user_id", user_id);
+                          v.getContext().startActivity(intent);
+                      }
+                  });
         }
     }
 }
