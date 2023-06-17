@@ -133,6 +133,8 @@ public class Backend3_Form_addJob {
             CollectionReference jobPostedRef = database.collection("users").document(userId).collection("jobPosted");
             jobPostedRef.add(jobMap)
                     .addOnSuccessListener(documentReference -> {
+                        String document_id = documentReference.getId();
+                        jobMap.put("doc_id",document_id);
                         Toast.makeText(context, "Job created successfully", Toast.LENGTH_SHORT).show();
                         clearForm();
                     })
@@ -160,8 +162,7 @@ public class Backend3_Form_addJob {
 
         // Format the date
         SimpleDateFormat dateFormat = new SimpleDateFormat("d' 'MMMM', 'EEEE' 'yyyy", Locale.getDefault());
-        String formatted_Date = dateFormat.format(currentDate);
 
-        return formatted_Date;
+        return dateFormat.format(currentDate);
     }
 }
