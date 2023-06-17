@@ -62,19 +62,15 @@ FirebaseFirestore database;
         else{
             Backend9_Data_Retrieval backend9_data_retrieval = new Backend9_Data_Retrieval(this,Auth , b9_company_name, b9_job_role, b9_total_openings, b9_job_type, b9_job_state, b9_job_city, b9_job_address, b9_job_email, b9_job_info, b9_progress_bar, database, document_id, user_id, b9_job_description);
             backend9_data_retrieval.fetch_and_set_data();
+            b9_job_request.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(getApplicationContext(),"clicked", Toast.LENGTH_SHORT).show();
+                    backend9_data_retrieval.check_user_data();
+                }
+            });
         }
 
-
-        b9_job_request.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FirebaseUser get_user = Auth.getCurrentUser();
-                if(get_user==null){
-                    startActivity(new Intent(getApplicationContext(), Backend4_LoginMessage.class));
-                    finish();
-                }
-            }
-        });
 
         b9_Back.setOnClickListener(new View.OnClickListener() {
             @Override
