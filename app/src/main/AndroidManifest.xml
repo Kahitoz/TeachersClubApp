@@ -12,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TCA"
         tools:targetApi="31">
+
         <activity
             android:name=".Backend12_UpdatePage"
             android:exported="false" />

@@ -65,7 +65,7 @@ FirebaseFirestore database;
             b9_job_request.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    backend9_data_retrieval.check_user_data();
+                    //backend9_data_retrieval.check_user_data();
                 }
             });
         }
