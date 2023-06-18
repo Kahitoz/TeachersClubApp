@@ -89,15 +89,15 @@
 
                     </ImageView>
 
-                    <TextView
-                        android:id="@+id/name"
+                    <EditText
+                        android:id="@+id/ui7_name"
                         android:layout_width="200dp"
                         android:padding="4dp"
                         android:background="@drawable/shape_card_shaper"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:hint="Name" >
-                    </TextView>
+                    </EditText>
 
 
                 </FrameLayout>
@@ -115,14 +115,14 @@
 
                     </ImageView>
 
-                    <TextView
-                        android:id="@+id/phone_number"
+                    <EditText
+                        android:id="@+id/ui7_phone"
                         android:layout_width="200dp"
                         android:padding="4dp"
                         android:background="@drawable/shape_card_shaper"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:hint="Phone number" />
+                        android:hint="Phone number"/>
 
                 </FrameLayout>
 
@@ -135,20 +135,63 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="left"
-                        android:src="@drawable/icon_location">
+                        android:src="@drawable/icon_location"
+                        tools:ignore="RtlHardcoded">
 
                     </ImageView>
 
                     <TextView
-                        android:id="@+id/location"
-                        android:padding="4dp"
-                        android:layout_width="200dp"
-                        android:background="@drawable/shape_card_shaper"
+
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:hint="Location">
+                        android:text="@string/add_job_7"
+                        android:layout_gravity="left"
+                        android:layout_marginStart="30dp"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        tools:ignore="RtlHardcoded">
 
                     </TextView>
+
+                    <Spinner
+                        android:id="@+id/spinner_state"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:layout_marginStart="80dp"
+                        android:background="@drawable/shape_additional_edit_text_shaper"
+                        tools:ignore="RtlHardcoded" />
+
+                    <TextView
+                        android:id="@+id/textView13"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="City"
+                        android:layout_gravity="left"
+                        android:layout_marginStart="200dp"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        tools:ignore="RtlHardcoded">
+
+                    </TextView>
+
+                    <EditText
+                        android:id="@+id/ui7_city"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:autofillHints=""
+                        android:layout_gravity="right"
+                        android:layout_marginEnd="10dp"
+                        android:background="@drawable/shape_additional_edit_text_shaper"
+                        android:inputType="text"
+                        android:padding="5dp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/black"
+                        android:textSize="14sp"
+                        tools:ignore="RtlHardcoded" />
+
 
 
                 </FrameLayout>
@@ -338,15 +381,29 @@
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
 
             <TextView
+                android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="TCA"
-                android:textSize="20sp"
                 android:textColor="@color/heading"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/imageView4"
                 app:layout_constraintStart_toEndOf="@+id/imageView4"
                 app:layout_constraintTop_toTopOf="@+id/imageView4" />
+
+            <Button
+                android:id="@+id/ui7_update"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/blue"
+                android:text="Update"
+                app:layout_constraintBottom_toBottomOf="@+id/textView2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textView2"
+                app:layout_constraintTop_toTopOf="@+id/textView2">
+
+            </Button>
 
             <TextView
                 android:id="@+id/textView16"
