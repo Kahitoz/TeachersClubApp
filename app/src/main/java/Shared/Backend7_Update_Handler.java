@@ -1,9 +1,11 @@
 package Shared;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -33,7 +35,7 @@ public class Backend7_Update_Handler {
         this.context = context;
     }
     public void add_adapter(){
-        String[] indianStates = {"Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh", "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana", "Tripura", "Uttar Pradesh", "Uttarakhand", "West Bengal"};
+        String[] indianStates = {"","Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh", "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana", "Tripura", "Uttar Pradesh", "Uttarakhand", "West Bengal"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_item, indianStates);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         b7_state.setAdapter(adapter);
@@ -45,18 +47,38 @@ public class Backend7_Update_Handler {
                 if(task.isSuccessful()){
                     DocumentSnapshot documentSnapshot = task.getResult();
                     if(documentSnapshot!=null){
+
                         String name = documentSnapshot.getString("name");
                         String state = documentSnapshot.getString("state");
                         String city = documentSnapshot.getString("city");
                         String phone = documentSnapshot.getString("phone");
-                        String status = documentSnapshot.getString("phone");
+                        String status = documentSnapshot.getString("status");
 
                         b7_name.setText(name);
+                        b7_city.setText(city);
+                        b7_phone_number.setText(phone);
+                        b7_status.setText(status);
+                        b7_state.setSelection(getSpinnerIndex(b7_state, state));
                     }
+                }else{
+                    Toast.makeText(context, "task Failed", Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
+
+    private int getSpinnerIndex(Spinner spinner, String value) {
+        ArrayAdapter<String> adapter = (ArrayAdapter<String>) spinner.getAdapter();
+        if (adapter != null) {
+            for (int i = 0; i < adapter.getCount(); i++) {
+                if (TextUtils.equals(adapter.getItem(i), value)) {
+                    return i;
+                }
+            }
+        }
+        return 0; // Default index
+    }
+
 
     public void update_operation(){
 

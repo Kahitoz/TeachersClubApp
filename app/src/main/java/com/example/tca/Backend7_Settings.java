@@ -38,6 +38,7 @@ Button b7_update;
         auth = FirebaseAuth.getInstance();
         database = FirebaseFirestore.getInstance();
         b7_update = findViewById(R.id.ui7_update);
+        b7_status = findViewById(R.id.ui7_status);
         b7_Back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
