@@ -10,11 +10,16 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 public class Backend7_Update_Handler {
@@ -80,7 +85,79 @@ public class Backend7_Update_Handler {
     }
 
 
-    public void update_operation(){
+    public void update_operation() {
+        final String newName = b7_name.getText().toString().trim();
+        final String newCity = b7_city.getText().toString().trim();
+        final String newPhone = b7_phone_number.getText().toString().trim();
+        final String newState = b7_state.getSelectedItem().toString().trim();
+        final String newStatus = b7_status.getText().toString().trim();
 
+        // Fetch the existing document from Firestore
+        DocumentReference userRef = database.collection("users").document(Objects.requireNonNull(auth.getUid()));
+        userRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot documentSnapshot = task.getResult();
+                    if (documentSnapshot != null) {
+                        // Get the existing values from the document
+                        String existingName = documentSnapshot.getString("name");
+                        String existingCity = documentSnapshot.getString("city");
+                        String existingPhone = documentSnapshot.getString("phone");
+                        String existingState = documentSnapshot.getString("state");
+                        String existingStatus = documentSnapshot.getString("status");
+
+                        // Check if any field values have changed
+                        boolean isNameChanged = !newName.equals(existingName);
+                        boolean isCityChanged = !newCity.equals(existingCity);
+                        boolean isPhoneChanged = !newPhone.equals(existingPhone);
+                        boolean isStateChanged = !newState.equals(existingState);
+                        boolean isStatusChanged = !newStatus.equals(existingStatus);
+
+                        // Create a map to hold the updated values
+                        Map<String, Object> updates = new HashMap<>();
+
+                        // Update the map only for the fields that have changed
+                        if (isNameChanged) {
+                            updates.put("name", newName);
+                        }
+                        if (isCityChanged) {
+                            updates.put("city", newCity);
+                        }
+                        if (isPhoneChanged) {
+                            updates.put("phone", newPhone);
+                        }
+                        if (isStateChanged) {
+                            updates.put("state", newState);
+                        }
+                        if (isStatusChanged) {
+                            updates.put("status", newStatus);
+                        }
+
+                        // Perform the update if there are any changes
+                        if (!updates.isEmpty()) {
+                            userRef.update(updates)
+                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void aVoid) {
+                                            Toast.makeText(context, "Update successful", Toast.LENGTH_SHORT).show();
+                                        }
+                                    })
+                                    .addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Toast.makeText(context, "Update failed", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                        } else {
+                            Toast.makeText(context, "No changes to update", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                } else {
+                    Toast.makeText(context, "Fetch failed", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
+
 }
