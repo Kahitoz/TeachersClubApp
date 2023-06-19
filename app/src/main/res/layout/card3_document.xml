@@ -3,67 +3,80 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@drawable/shape_card_shaper"
-    android:padding="2dp"
+    android:padding="5dp"
     android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/card_doc_download"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="5dp"
-        android:background="@drawable/shape_image_view_shaper"
-        android:contentDescription="@string/card_doc_1"
-        android:src="@drawable/icon_download"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_card_shaper"
+        android:padding="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/card3_document"
-        android:text="file_name"
-        android:textColor="@color/boundary1"
-        android:textSize="10sp"
-        app:layout_constraintBottom_toTopOf="@+id/card_doc_title"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        <ImageView
+            android:id="@+id/card_doc_download"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/shape_image_view_shaper"
+            android:contentDescription="@string/card_doc_1"
+            android:src="@drawable/icon_download"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/card_doc_title"
-        android:text="@string/card_doc_2"
-        android:textColor="@color/black"
-        android:layout_marginStart="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/card_doc_download"
-        app:layout_constraintStart_toEndOf="@+id/card_doc_download"
-        app:layout_constraintTop_toTopOf="@+id/card_doc_download">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/card3_document"
+            android:text="file_name"
+            android:textColor="@color/boundary1"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toTopOf="@+id/card_doc_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    </TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/card_doc_title"
+            android:text="@string/card_doc_2"
+            android:textColor="@color/black"
+            android:layout_marginStart="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/card_doc_download"
+            app:layout_constraintStart_toEndOf="@+id/card_doc_download"
+            app:layout_constraintTop_toTopOf="@+id/card_doc_download">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/card_doc_3"
-        android:layout_marginTop="3dp"
-        android:id="@+id/card_doc_date"
-        android:layout_marginStart="2dp"
-        android:textColor="@color/boundary1"
-        app:layout_constraintStart_toStartOf="@+id/card_doc_download"
-        app:layout_constraintTop_toBottomOf="@+id/card_doc_download" />
+        </TextView>
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/icon_delete"
-        android:layout_marginEnd="10dp"
-        android:id="@+id/card_doc_delete"
-        app:layout_constraintBottom_toBottomOf="@+id/card_doc_date"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/card_doc_date"
-        android:contentDescription="@string/delete" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/card_doc_3"
+            android:layout_marginTop="3dp"
+            android:id="@+id/card_doc_date"
+            android:layout_marginStart="2dp"
+            android:textColor="@color/boundary1"
+            app:layout_constraintStart_toStartOf="@+id/card_doc_download"
+            app:layout_constraintTop_toBottomOf="@+id/card_doc_download" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_delete"
+            android:layout_marginEnd="10dp"
+            android:id="@+id/card_doc_delete"
+            app:layout_constraintBottom_toBottomOf="@+id/card_doc_date"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/card_doc_date"
+            android:contentDescription="@string/delete" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

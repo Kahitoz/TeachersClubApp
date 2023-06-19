@@ -161,6 +161,7 @@
                 android:id="@+id/imageView10"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
+                android:src="@drawable/icon_person"
                 android:background="@drawable/shape_image_view_shaper"
                 android:contentDescription="@string/profile"
                 app:layout_constraintStart_toStartOf="parent"
