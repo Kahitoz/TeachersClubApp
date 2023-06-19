@@ -5,7 +5,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -18,10 +17,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import org.checkerframework.checker.units.qual.A;
-
-import Shared.Backend5_bio_handler;
-import Shared.Backend5_document_handler;
+import Shared.Backend5_utils.Backend5_bio_handler;
+import Shared.Backend5_utils.Backend5_documents.Backend5_document_handler;
 import Shared.NavbarFunctionality;
 
 public class Backend5_Profile extends AppCompatActivity {

@@ -1,4 +1,4 @@
-package Shared;
+package Shared.Backend5_utils.Backend5_documents;
 
 public class Backend5_get_set_document {
     String date, download_url, file_name, info;
