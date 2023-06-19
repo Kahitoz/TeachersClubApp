@@ -182,12 +182,14 @@
             </TextView>
 
             <TextView
-                android:id="@+id/textView23"
-                android:layout_width="wrap_content"
+                android:id="@+id/ui5_bio"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="4dp"
                 android:text="@string/profile_bio"
                 android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/profile_name"
                 app:layout_constraintTop_toBottomOf="@+id/profile_name" />
 
@@ -230,6 +232,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
+                android:id="@+id/ui5_documents"
                 android:text="@string/documents"
                 android:textColor="@color/black">
 
@@ -246,6 +249,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
+                android:id="@+id/ui5_job_applied"
                 android:text="@string/job_applied"
                 android:textColor="@color/black">
 
@@ -260,11 +264,11 @@
             tools:ignore="RtlHardcoded">
 
 
-
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_gravity="bottom"
+                android:id="@+id/ui5_job_posted"
                 android:text="@string/job_posted"
                 android:textColor="@color/black">
 
