@@ -93,12 +93,15 @@ public class Backend8_Upload_transaction {
 
         // Create a new document to store the download URL
         DocumentReference newDocumentRef = documentsRef.document();
+        Get_Date get_date = new Get_Date();
+        String date = get_date.getCurrentDate();
 
         // Create a map to store the document data
         Map<String, Object> documentData = new HashMap<>();
         documentData.put("info", b8_Document_info.getText().toString());
         documentData.put("file_name", selectedFileName);
         documentData.put("download_url", downloadUrl);
+        documentData.put("date", date);
 
         // Set the data of the new document
         newDocumentRef.set(documentData)

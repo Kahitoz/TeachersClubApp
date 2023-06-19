@@ -1,6 +1,7 @@
 package com.example.tca;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -25,6 +26,7 @@ ImageView b5_settings;
 FrameLayout b5_add_document;
 TextView b5_name, b5_bio, b5_documents, b5_job_posted, b5_job_applied;
 ProgressBar b5_progress_bar;
+RecyclerView b5_recycler_view;
 FirebaseFirestore database;
 FirebaseAuth Auth;
     @SuppressLint("MissingInflatedId")
@@ -43,11 +45,14 @@ FirebaseAuth Auth;
         b5_job_posted = findViewById(R.id.ui5_job_posted);
         b5_job_applied = findViewById(R.id.ui5_job_applied);
 
+        b5_recycler_view = findViewById(R.id.recyclerView);
+
         Auth = FirebaseAuth.getInstance();
         database = FirebaseFirestore.getInstance();
 
         Backend5_bio_handler backend5_bio_handler = new Backend5_bio_handler(this,Auth,database,b5_name,b5_bio);
         backend5_bio_handler.set_profile();
+
         b5_settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -101,8 +101,8 @@ public class Backend3_Form_addJob {
     public void upload_job_data() {
         FirebaseUser currentUser = auth.getCurrentUser();
         if (currentUser != null) {
+            Get_Date get_date = new Get_Date();
             String userId = currentUser.getUid();
-
             String state = stateSpinner.getSelectedItem().toString();
             String jobType = jobTypeSpinner.getSelectedItem().toString();
             String company = companyEditText.getText().toString();
@@ -113,7 +113,7 @@ public class Backend3_Form_addJob {
             String email = emailEditText.getText().toString();
             String description = descriptionEditText.getText().toString();
             String info = infoEditText.getText().toString();
-            String date = getCurrentDate();
+            String date = get_date.getCurrentDate();
 
             // Create a new job map
             Map<String, Object> jobMap = new HashMap<>();
@@ -156,14 +156,5 @@ public class Backend3_Form_addJob {
         infoEditText.setText("");
     }
 
-    public String getCurrentDate() {
-        // Get current date
-        Calendar calendar = Calendar.getInstance();
-        Date currentDate = calendar.getTime();
 
-        // Format the date
-        SimpleDateFormat dateFormat = new SimpleDateFormat("d' 'MMMM', 'EEEE' 'yyyy", Locale.getDefault());
-
-        return dateFormat.format(currentDate);
-    }
 }
