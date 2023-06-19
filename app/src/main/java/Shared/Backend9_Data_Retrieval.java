@@ -122,12 +122,15 @@ public class Backend9_Data_Retrieval {
                                                     @Override
                                                     public void onComplete(@NonNull Task<DocumentReference> task) {
                                                         if (task.isSuccessful()) {
+                                                            Get_Date get_date = new Get_Date();
+                                                            String date = get_date.getCurrentDate();
                                                             HashMap<String, Object> notify = new HashMap<>();
                                                             notify.put("message", "You have applied for a new job");
                                                             notify.put("id", doc_id);
 
                                                             HashMap<String, Object> job_id = new HashMap<>();
                                                             job_id.put("id", doc_id);
+                                                            job_id.put("data", get_date);
 
                                                             database.collection("users").document(auth.getUid()).collection("jobApplied").document(doc_id).set(job_id).addOnCompleteListener(new OnCompleteListener<Void>() {
                                                                 @Override
