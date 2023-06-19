@@ -1,4 +1,4 @@
-package Shared.Backen2_Utils;
+package Shared.Backend2_Utils;
 
 public class Backend2_GetAndSet {
     String address, city, company, date, description, email, info, jobType, openings, role, state, status, doc_id, user_id;
