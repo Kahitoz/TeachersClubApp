@@ -22,6 +22,7 @@ import com.google.firebase.storage.UploadTask;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 public class Backend8_Upload_transaction {
     Context context;
@@ -45,9 +46,10 @@ public class Backend8_Upload_transaction {
         // Get a reference to the Firebase Storage
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference storageRef = storage.getReference();
+        String doc_id = UUID.randomUUID().toString();
 
         // Upload the document to Firebase Storage with the selected file name
-        StorageReference documentRef = storageRef.child("documents/" + selectedFileName);
+        StorageReference documentRef = storageRef.child("documents/"+doc_id+"/"+selectedFileName);
         UploadTask uploadTask = documentRef.putFile(fileUri);
 
         // Monitor the upload progress
