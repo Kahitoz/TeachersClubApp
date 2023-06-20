@@ -1,4 +1,4 @@
-package Shared.Backend5_utils;
+package Shared.Backend5_utils.Backend5_jobsAdded;
 
 import android.content.Context;
 import android.view.View;
@@ -21,10 +21,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import Shared.Backend2_Utils.Backend2_Adapter;
-import Shared.Backend2_Utils.Backend2_GetAndSet;
-import Shared.Backend5_utils.Backend5_documents.Backend5_document_Adapter;
-import Shared.Backend5_utils.Backend5_documents.Backend5_get_set_document;
+import Shared.Backend5_utils.Backend5_jobsAdded.Backend5_get_set_jobAdded;
+import Shared.Backend5_utils.Backend5_jobsAdded.Backend5_jobAdded_Adapter;
 
 public class Backend5_jobAdded_handler {
     private final Context context;
@@ -50,14 +48,14 @@ public class Backend5_jobAdded_handler {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
-                            List<Backend2_GetAndSet> documentList = new ArrayList<>();
+                            List<Backend5_get_set_jobAdded> documentList = new ArrayList<>();
 
                             for (DocumentSnapshot document : task.getResult()) {
-                                Backend2_GetAndSet backend5Document = document.toObject(Backend2_GetAndSet.class);
+                                Backend5_get_set_jobAdded backend5Document = document.toObject(Backend5_get_set_jobAdded.class);
                                 documentList.add(backend5Document);
                             }
 
-                            Backend2_Adapter adapter = new Backend2_Adapter(documentList);
+                            Backend5_jobAdded_Adapter adapter = new Backend5_jobAdded_Adapter(documentList, context);
                             b5_recyclerView.setAdapter(adapter);
                             b5_recyclerView.setLayoutManager(new LinearLayoutManager(b5_recyclerView.getContext()));
                         } else {

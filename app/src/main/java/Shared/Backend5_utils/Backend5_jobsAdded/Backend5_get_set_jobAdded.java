@@ -1,4 +1,4 @@
-package Shared.Backend5_utils;
+package Shared.Backend5_utils.Backend5_jobsAdded;
 
 public class Backend5_get_set_jobAdded {
     String address, city, company, date, description, email, info, jobType, openings, role, state, status, doc_id, user_id;
