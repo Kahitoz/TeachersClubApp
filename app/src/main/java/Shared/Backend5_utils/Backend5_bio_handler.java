@@ -28,7 +28,8 @@ public class Backend5_bio_handler {
     }
 
     public void set_profile(){
-        database.collection("users").document(Objects.requireNonNull(auth.getUid())).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+
+        database.collection("users").document((Objects.requireNonNull(auth.getUid()))).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if(task.isSuccessful()){

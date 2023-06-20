@@ -11,6 +11,7 @@ import android.widget.EdgeEffect;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
@@ -25,6 +26,7 @@ Spinner b7_state;
 FirebaseAuth auth;
 FirebaseFirestore database;
 Button b7_update;
+TextView logout;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +41,7 @@ Button b7_update;
         database = FirebaseFirestore.getInstance();
         b7_update = findViewById(R.id.ui7_update);
         b7_status = findViewById(R.id.ui7_status);
+        logout = findViewById(R.id.logout);
         b7_Back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,9 +50,18 @@ Button b7_update;
             }
         });
 
+
+
         Backend7_Update_Handler backend7_update_handler = new Backend7_Update_Handler(this, b7_name, b7_phone_number, b7_city, b7_status, b7_state, auth, database);
         backend7_update_handler.add_adapter();
         backend7_update_handler.check_and_update();
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                backend7_update_handler.logout();
+            }
+        });
+
         b7_update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
