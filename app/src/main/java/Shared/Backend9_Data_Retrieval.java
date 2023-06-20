@@ -92,7 +92,6 @@ public class Backend9_Data_Retrieval {
     }
     public void check_user_data() {
         String doc_id = document_id.toString().trim();
-        String u_id = user_id;
         if (user_id.equals(auth.getUid())) {
             Toast.makeText(context, "Cannot apply on your own job", Toast.LENGTH_LONG).show();
         } else {
@@ -119,14 +118,18 @@ public class Backend9_Data_Retrieval {
                                                     Toast.makeText(context, "Complete your profile", Toast.LENGTH_LONG).show();
                                                     context.startActivity(new Intent(context, Backend7_Settings.class));
                                                 } else {
+                                                    Get_Date get_date = new Get_Date();
+                                                    String date = get_date.getCurrentDate();
                                                     HashMap<String, Object> data = new HashMap<>();
                                                     data.put("user_id", auth.getUid());
+                                                    data.put("date", date);
+                                                    data.put("chat", "close");
+                                                    data.put("status", "NA");
                                                     database.collection("users").document(user_id).collection("jobPosted").document(doc_id).collection("Applied_Job").add(data).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                                                         @Override
                                                         public void onComplete(@NonNull Task<DocumentReference> task) {
                                                             if (task.isSuccessful()) {
-                                                                Get_Date get_date = new Get_Date();
-                                                                String date = get_date.getCurrentDate();
+
                                                                 HashMap<String, Object> notify = new HashMap<>();
                                                                 notify.put("message", "You have applied for a new job");
                                                                 notify.put("id", doc_id);
@@ -135,6 +138,8 @@ public class Backend9_Data_Retrieval {
                                                                 HashMap<String, Object> job_id = new HashMap<>();
                                                                 job_id.put("id", doc_id);
                                                                 job_id.put("date", date);
+                                                                job_id.put("chat", "close");
+                                                                job_id.put("status", "NA");
 
                                                                 database.collection("users").document(auth.getUid()).collection("jobApplied").document(doc_id).set(job_id).addOnCompleteListener(new OnCompleteListener<Void>() {
                                                                     @Override
