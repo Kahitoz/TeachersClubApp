@@ -92,91 +92,95 @@ public class Backend9_Data_Retrieval {
     }
     public void check_user_data() {
         String doc_id = document_id.toString().trim();
+        String u_id = user_id;
+        if (user_id.equals(auth.getUid())) {
+            Toast.makeText(context, "Cannot apply on your own job", Toast.LENGTH_LONG).show();
+        } else {
+            database.collection("users").document(Objects.requireNonNull(auth.getUid())).collection("jobApplied").document(doc_id).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                    if (task.isSuccessful()) {
+                        DocumentSnapshot documentSnapshot = task.getResult();
+                        if (documentSnapshot != null && documentSnapshot.exists()) {
+                            Toast.makeText(context, "Already applied for this job", Toast.LENGTH_LONG).show();
+                        } else {
+                            database.collection("users").document(Objects.requireNonNull(auth.getUid())).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                    if (task.isSuccessful()) {
+                                        DocumentSnapshot userSnapshot = task.getResult();
+                                        if (userSnapshot != null) {
+                                            String name = userSnapshot.getString("name");
+                                            String city = userSnapshot.getString("city");
+                                            String state = userSnapshot.getString("state");
 
-        database.collection("users").document(Objects.requireNonNull(auth.getUid())).collection("jobApplied").document(doc_id).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()) {
-                    DocumentSnapshot documentSnapshot = task.getResult();
-                    if (documentSnapshot != null && documentSnapshot.exists()) {
-                        Toast.makeText(context, "Already applied for this job", Toast.LENGTH_LONG).show();
-                    } else {
-                        database.collection("users").document(Objects.requireNonNull(auth.getUid())).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                            @Override
-                            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                                if (task.isSuccessful()) {
-                                    DocumentSnapshot userSnapshot = task.getResult();
-                                    if (userSnapshot != null) {
-                                        String name = userSnapshot.getString("name");
-                                        String city = userSnapshot.getString("city");
-                                        String state = userSnapshot.getString("state");
+                                            if (name != null && city != null && state != null) {
+                                                if (name.isEmpty() && city.isEmpty() && state.isEmpty()) {
+                                                    Toast.makeText(context, "Complete your profile", Toast.LENGTH_LONG).show();
+                                                    context.startActivity(new Intent(context, Backend7_Settings.class));
+                                                } else {
+                                                    HashMap<String, Object> data = new HashMap<>();
+                                                    data.put("user_id", auth.getUid());
+                                                    database.collection("users").document(user_id).collection("jobPosted").document(doc_id).collection("Applied_Job").add(data).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                                                        @Override
+                                                        public void onComplete(@NonNull Task<DocumentReference> task) {
+                                                            if (task.isSuccessful()) {
+                                                                Get_Date get_date = new Get_Date();
+                                                                String date = get_date.getCurrentDate();
+                                                                HashMap<String, Object> notify = new HashMap<>();
+                                                                notify.put("message", "You have applied for a new job");
+                                                                notify.put("id", doc_id);
+                                                                notify.put("date", date);
 
-                                        if (name != null && city != null && state != null) {
-                                            if (name.isEmpty() && city.isEmpty() && state.isEmpty()) {
-                                                Toast.makeText(context, "Complete your profile", Toast.LENGTH_LONG).show();
-                                                context.startActivity(new Intent(context, Backend7_Settings.class));
-                                            } else {
-                                                HashMap<String, Object> data = new HashMap<>();
-                                                data.put("user_id", auth.getUid());
-                                                database.collection("users").document(user_id).collection("jobPosted").document(doc_id).collection("Applied_Job").add(data).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
-                                                    @Override
-                                                    public void onComplete(@NonNull Task<DocumentReference> task) {
-                                                        if (task.isSuccessful()) {
-                                                            Get_Date get_date = new Get_Date();
-                                                            String date = get_date.getCurrentDate();
-                                                            HashMap<String, Object> notify = new HashMap<>();
-                                                            notify.put("message", "You have applied for a new job");
-                                                            notify.put("id", doc_id);
-                                                            notify.put("date", date);
+                                                                HashMap<String, Object> job_id = new HashMap<>();
+                                                                job_id.put("id", doc_id);
+                                                                job_id.put("date", date);
 
-                                                            HashMap<String, Object> job_id = new HashMap<>();
-                                                            job_id.put("id", doc_id);
-                                                            job_id.put("date", date);
-
-                                                            database.collection("users").document(auth.getUid()).collection("jobApplied").document(doc_id).set(job_id).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                                                @Override
-                                                                public void onComplete(@NonNull Task<Void> task) {
-                                                                    if (task.isSuccessful()) {
-                                                                        database.collection("users").document(auth.getUid()).collection("notification").add(notify).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
-                                                                            @Override
-                                                                            public void onComplete(@NonNull Task<DocumentReference> task) {
-                                                                                if (task.isSuccessful()) {
-                                                                                    Toast.makeText(context, "Notification sent", Toast.LENGTH_SHORT).show();
-                                                                                } else {
-                                                                                    Toast.makeText(context, "Failed to send notification", Toast.LENGTH_SHORT).show();
+                                                                database.collection("users").document(auth.getUid()).collection("jobApplied").document(doc_id).set(job_id).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                                    @Override
+                                                                    public void onComplete(@NonNull Task<Void> task) {
+                                                                        if (task.isSuccessful()) {
+                                                                            database.collection("users").document(auth.getUid()).collection("notification").add(notify).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                                                                                @Override
+                                                                                public void onComplete(@NonNull Task<DocumentReference> task) {
+                                                                                    if (task.isSuccessful()) {
+                                                                                        Toast.makeText(context, "Notification sent", Toast.LENGTH_SHORT).show();
+                                                                                    } else {
+                                                                                        Toast.makeText(context, "Failed to send notification", Toast.LENGTH_SHORT).show();
+                                                                                    }
                                                                                 }
-                                                                            }
-                                                                        });
-                                                                        Toast.makeText(context, "You have successfully applied for the job", Toast.LENGTH_LONG).show();
-                                                                        context.startActivity(new Intent(context, Backend5_Profile.class));
-                                                                    } else {
-                                                                        Toast.makeText(context, "Failed", Toast.LENGTH_LONG).show();
+                                                                            });
+                                                                            Toast.makeText(context, "You have successfully applied for the job", Toast.LENGTH_LONG).show();
+                                                                            context.startActivity(new Intent(context, Backend5_Profile.class));
+                                                                        } else {
+                                                                            Toast.makeText(context, "Failed", Toast.LENGTH_LONG).show();
+                                                                        }
                                                                     }
-                                                                }
-                                                            });
-                                                        } else {
-                                                            Toast.makeText(context, "Error", Toast.LENGTH_LONG).show();
+                                                                });
+                                                            } else {
+                                                                Toast.makeText(context, "Error", Toast.LENGTH_LONG).show();
+                                                            }
                                                         }
-                                                    }
-                                                });
+                                                    });
+                                                }
+                                            } else {
+                                                Toast.makeText(context, "Incomplete profile data", Toast.LENGTH_LONG).show();
                                             }
                                         } else {
-                                            Toast.makeText(context, "Incomplete profile data", Toast.LENGTH_LONG).show();
+                                            Toast.makeText(context, "User document does not exist", Toast.LENGTH_LONG).show();
                                         }
                                     } else {
-                                        Toast.makeText(context, "User document does not exist", Toast.LENGTH_LONG).show();
+                                        Toast.makeText(context, "Error retrieving user data", Toast.LENGTH_LONG).show();
                                     }
-                                } else {
-                                    Toast.makeText(context, "Error retrieving user data", Toast.LENGTH_LONG).show();
                                 }
-                            }
-                        });
+                            });
+                        }
+                    } else {
+                        Toast.makeText(context, "Error retrieving job application data", Toast.LENGTH_LONG).show();
                     }
-                } else {
-                    Toast.makeText(context, "Error retrieving job application data", Toast.LENGTH_LONG).show();
                 }
-            }
-        });
+            });
+        }
     }
 
 
