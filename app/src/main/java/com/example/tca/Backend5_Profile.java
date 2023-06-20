@@ -92,6 +92,7 @@ public class Backend5_Profile extends AppCompatActivity {
         FirebaseUser currentUser = Auth.getCurrentUser();
         if (currentUser != null) {
             backend5_bio_handler.set_profile();
+            backend5_document_handler.get_data();
             // Additional code to execute when the user is logged in
         } else {
             // User is not logged in, handle the situation (e.g., show a login screen)
