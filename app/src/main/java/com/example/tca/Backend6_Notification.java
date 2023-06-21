@@ -1,6 +1,7 @@
 package com.example.tca;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +14,8 @@ import Shared.NavbarFunctionality;
 
 public class Backend6_Notification extends AppCompatActivity {
     FirebaseAuth Auth;
+    RecyclerView b6_recycle;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
