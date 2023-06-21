@@ -24,6 +24,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import Shared.Backend5_utils.Backend5_bio_handler;
 import Shared.Backend5_utils.Backend5_documents.Backend5_document_handler;
 import Shared.Backend5_utils.Backend5_jobsAdded.Backend5_jobAdded_handler;
+import Shared.Backend5_utils.Backend5_jobsApplied.Backend5_jobApplied_handler;
 import Shared.NavbarFunctionality;
 
 public class Backend5_Profile extends AppCompatActivity {
@@ -59,6 +60,7 @@ public class Backend5_Profile extends AppCompatActivity {
         Backend5_bio_handler backend5_bio_handler = new Backend5_bio_handler(this, Auth, database, b5_name, b5_bio);
         Backend5_document_handler backend5_document_handler = new Backend5_document_handler(this, Auth, database, b5_recycler_view, b5_progress_bar);
         Backend5_jobAdded_handler backend5_jobAdded_handler = new Backend5_jobAdded_handler(this, Auth, database, b5_recycler_view, b5_progress_bar);
+        Backend5_jobApplied_handler backend5_jobApplied_handler = new Backend5_jobApplied_handler(this, Auth, database, b5_recycler_view, b5_progress_bar);
 
         b5_settings.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,6 +87,13 @@ public class Backend5_Profile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 backend5_jobAdded_handler.get_job();
+            }
+        });
+
+        b5_job_applied.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                backend5_jobApplied_handler.get_applied_job();
             }
         });
 
