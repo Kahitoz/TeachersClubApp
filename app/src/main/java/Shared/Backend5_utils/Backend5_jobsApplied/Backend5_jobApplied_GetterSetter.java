@@ -1,40 +1,34 @@
 package Shared.Backend5_utils.Backend5_jobsApplied;
 
 public class Backend5_jobApplied_GetterSetter {
-    String chat, date, id, status;
+    String hire_id, job_id;
+    String applicant_id;
+
+    public String getApplicant_id() {
+        return applicant_id;
+    }
+
+    public void setApplicant_id(String applicant_id) {
+        this.applicant_id = applicant_id;
+    }
+
+    public String getHire_id() {
+        return hire_id;
+    }
+
+    public void setHire_id(String hire_id) {
+        this.hire_id = hire_id;
+    }
+
+    public String getJob_id() {
+        return job_id;
+    }
+
+    public void setJob_id(String job_id) {
+        this.job_id = job_id;
+    }
 
     public Backend5_jobApplied_GetterSetter() {
     }
 
-    public String getChat() {
-        return chat;
-    }
-
-    public void setChat(String chat) {
-        this.chat = chat;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
 }

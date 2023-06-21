@@ -11,6 +11,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tca.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.List;
@@ -18,7 +21,7 @@ import java.util.List;
 import Shared.Backend5_utils.Backend5_jobsAdded.Backend5_jobAdded_Adapter;
 
 public class Backend5_jobApplied_Adapter extends RecyclerView.Adapter<Backend5_jobApplied_Adapter.CardViewHolder> {
-List<Backend5_jobApplied_GetterSetter> jobs_applied;
+static List<Backend5_jobApplied_GetterSetter> jobs_applied;
 Context context;
 
     public Backend5_jobApplied_Adapter(List<Backend5_jobApplied_GetterSetter> jobs_applied, Context context) {
@@ -55,12 +58,22 @@ Context context;
             b5_date = itemView.findViewById(R.id.notify_time);
             b5_view = itemView.findViewById(R.id.card5_view);
 
+            int position = getAdapterPosition();
+            Backend5_jobApplied_GetterSetter backend5_jobApplied_getterSetter = jobs_applied.get(position);
+            String hire_id = backend5_jobApplied_getterSetter.getHire_id();
+            String job_id = backend5_jobApplied_getterSetter.getJob_id();
+            String applicant_id = backend5_jobApplied_getterSetter.getApplicant_id();
 
         }
     }
-    public String[] get_data(){
+    public String[] get_data(String hire_id, String job_id, String applicant_id){
         FirebaseFirestore database =FirebaseFirestore.getInstance();
-        database.collectionGroup("jobPosted");
-        return  null;
+        database.collection("users").document(hire_id).collection("jobsPosted").document(job_id).collection("applicants").document(applicant_id).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+
+            }
+        });
+        return null;
     }
 }

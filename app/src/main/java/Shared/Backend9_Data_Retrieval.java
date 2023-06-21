@@ -129,7 +129,8 @@ public class Backend9_Data_Retrieval {
                                                         @Override
                                                         public void onComplete(@NonNull Task<DocumentReference> task) {
                                                             if (task.isSuccessful()) {
-
+                                                                DocumentReference documentReference = task.getResult();
+                                                                String applicant_id = documentReference.getId();
                                                                 HashMap<String, Object> notify = new HashMap<>();
                                                                 notify.put("message", "You have applied for a new job");
                                                                 notify.put("job_id", doc_id);
@@ -138,6 +139,7 @@ public class Backend9_Data_Retrieval {
                                                                 HashMap<String, Object> job_id = new HashMap<>();
                                                                 job_id.put("job_id", doc_id);
                                                                 job_id.put("hire_id", user_id);
+                                                                job_id.put("applicant_id",applicant_id);
                                                                 database.collection("users").document(auth.getUid()).collection("jobApplied").document(doc_id).set(job_id).addOnCompleteListener(new OnCompleteListener<Void>() {
                                                                     @Override
                                                                     public void onComplete(@NonNull Task<Void> task) {
