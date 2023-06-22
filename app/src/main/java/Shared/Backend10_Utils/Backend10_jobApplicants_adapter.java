@@ -17,6 +17,12 @@ import java.util.List;
 
 public class Backend10_jobApplicants_adapter extends RecyclerView.Adapter<Backend10_jobApplicants_adapter.CardViewHolder> {
     Context context;
+
+    public Backend10_jobApplicants_adapter(Context context, List<Backend10_jobApplicants_getterSetter> applicants_list) {
+        this.context = context;
+        this.applicants_list = applicants_list;
+    }
+
     List<Backend10_jobApplicants_getterSetter> applicants_list;
     @NonNull
     @Override
