@@ -35,10 +35,11 @@ public class Backend10_JobApplicants extends AppCompatActivity {
         b10_back = findViewById(R.id.ui10_back);
         b10_recycle = findViewById(R.id.ui10_recycle);
         b10_progress = findViewById(R.id.ui10_progress);
-        Intent intent = new Intent();
+        Intent intent = getIntent();
         job_id = intent.getStringExtra("job_id");
         if(job_id != null){
             Backend10_jobApplicants_handler backend10_jobApplicants_handler = new Backend10_jobApplicants_handler(this, auth, database, job_id, b10_back, b10_recycle, b10_progress);
+            backend10_jobApplicants_handler.get_Data();
         }else{
             Toast.makeText(getApplicationContext(), "Some error occurred", Toast.LENGTH_SHORT).show();
         }
