@@ -14,8 +14,6 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import org.w3c.dom.Text;
-
 import Shared.Backend10_Utils.Backend10_jobApplicants_handler;
 
 public class Backend10_JobApplicants extends AppCompatActivity {
@@ -37,11 +35,12 @@ public class Backend10_JobApplicants extends AppCompatActivity {
         b10_progress = findViewById(R.id.ui10_progress);
         Intent intent = getIntent();
         job_id = intent.getStringExtra("job_id");
-        if(job_id != null){
+        if (job_id != null) {
             Backend10_jobApplicants_handler backend10_jobApplicants_handler = new Backend10_jobApplicants_handler(this, auth, database, job_id, b10_back, b10_recycle, b10_progress);
             backend10_jobApplicants_handler.get_Data();
-        }else{
+        } else {
             Toast.makeText(getApplicationContext(), "Some error occurred", Toast.LENGTH_SHORT).show();
+            finish();
         }
 
         b10_back.setOnClickListener(new View.OnClickListener() {
