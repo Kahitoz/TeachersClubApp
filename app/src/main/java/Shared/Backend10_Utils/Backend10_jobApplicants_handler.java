@@ -47,7 +47,7 @@ public class Backend10_jobApplicants_handler {
 
     public void get_Data(){
         b10_progress.setVisibility(View.VISIBLE);
-        database.collection("users").document(Objects.requireNonNull(auth.getUid())).collection("jobPosted").document(job_id).collection("Applied Job").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        database.collection("users").document(Objects.requireNonNull(auth.getUid())).collection("jobPosted").document(job_id.trim()).collection("Applied_Job").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
