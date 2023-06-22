@@ -30,6 +30,18 @@
         app:layout_constraintTop_toTopOf="@+id/card6_image" />
 
     <TextView
+        android:id="@+id/card6_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="applied on"
+        android:textColor="@color/boundary1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </TextView>
+
+    <TextView
         android:id="@+id/card6_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
