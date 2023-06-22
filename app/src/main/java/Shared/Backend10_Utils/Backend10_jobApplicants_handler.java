@@ -35,6 +35,7 @@ public class Backend10_jobApplicants_handler {
     RecyclerView b10_recycle;
     ProgressBar b10_progress;
 
+
     public Backend10_jobApplicants_handler(Context context, FirebaseAuth auth, FirebaseFirestore database, String job_id, ImageView b10_back, RecyclerView b10_recycle, ProgressBar b10_progress) {
         this.context = context;
         this.auth = auth;
@@ -58,7 +59,7 @@ public class Backend10_jobApplicants_handler {
                         documentList.add(backend5Document);
                     }
 
-                    Backend10_jobApplicants_adapter adapter = new Backend10_jobApplicants_adapter(context,documentList);
+                    Backend10_jobApplicants_adapter adapter = new Backend10_jobApplicants_adapter(context,documentList,job_id);
                     b10_recycle.setAdapter(adapter);
                     b10_recycle.setLayoutManager(new LinearLayoutManager(b10_recycle.getContext()));
 
