@@ -1,4 +1,4 @@
-package Shared.Backeng6_Utils;
+package Shared.Backend6_Utils;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -11,12 +11,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.tca.Backend6_Notification;
 import com.example.tca.R;
 
 import java.util.List;
-
-import Shared.Backend5_utils.Backend5_documents.Backend5_document_Adapter;
 
 public class Backend6_notification_Adapter extends RecyclerView.Adapter<Backend6_notification_Adapter.CardViewHolder> {
     List<Backend6_notification_GetterSetter> notify;

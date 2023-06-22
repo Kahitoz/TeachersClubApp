@@ -1,4 +1,4 @@
-package Shared.Backeng6_Utils;
+package Shared.Backend6_Utils;
 
 import android.content.Context;
 import android.view.View;
@@ -20,9 +20,6 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-
-import Shared.Backend5_utils.Backend5_jobsApplied.Backend5_jobApplied_Adapter;
-import Shared.Backend5_utils.Backend5_jobsApplied.Backend5_jobApplied_GetterSetter;
 
 public class Backend6_notification_handler {
     Context context;

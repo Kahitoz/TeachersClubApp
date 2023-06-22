@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:layout_width="150dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/profile"
         android:textColor="@color/black"
@@ -28,6 +28,19 @@
         app:layout_constraintBottom_toBottomOf="@+id/card6_image"
         app:layout_constraintStart_toEndOf="@+id/card6_image"
         app:layout_constraintTop_toTopOf="@+id/card6_image" />
+
+    <TextView
+        android:id="@+id/card6_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="NA"
+        android:layout_marginStart="10dp"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/card6_name"
+        app:layout_constraintStart_toEndOf="@+id/card6_name"
+        app:layout_constraintTop_toTopOf="@+id/card6_name">
+
+    </TextView>
 
     <TextView
         android:layout_width="wrap_content"

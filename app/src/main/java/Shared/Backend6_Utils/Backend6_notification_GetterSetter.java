@@ -1,4 +1,4 @@
-package Shared.Backeng6_Utils;
+package Shared.Backend6_Utils;
 
 public class Backend6_notification_GetterSetter {
     String date, job_id, message;

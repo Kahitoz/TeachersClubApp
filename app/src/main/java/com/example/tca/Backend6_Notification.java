@@ -13,7 +13,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import Shared.Backeng6_Utils.Backend6_notification_handler;
+import Shared.Backend6_Utils.Backend6_notification_handler;
 import Shared.NavbarFunctionality;
 
 public class Backend6_Notification extends AppCompatActivity {
