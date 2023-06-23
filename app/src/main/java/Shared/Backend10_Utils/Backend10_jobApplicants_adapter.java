@@ -2,6 +2,7 @@ package Shared.Backend10_Utils;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tca.Backend10_JobApplicants;
+import com.example.tca.Backend13_ViewProfile;
 import com.example.tca.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -28,16 +30,16 @@ import java.util.List;
 import java.util.Objects;
 
 public class Backend10_jobApplicants_adapter extends RecyclerView.Adapter<Backend10_jobApplicants_adapter.CardViewHolder> {
-    Context context;
+    static Context context;
     String job_id;
-
+    static List<Backend10_jobApplicants_getterSetter> applicants_list;
     public Backend10_jobApplicants_adapter(Context context, List<Backend10_jobApplicants_getterSetter> applicants_list, String job_id) {
         this.context = context;
-        this.applicants_list = applicants_list;
+        Backend10_jobApplicants_adapter.applicants_list = applicants_list;
         this.job_id = job_id;
     }
 
-    List<Backend10_jobApplicants_getterSetter> applicants_list;
+
     @NonNull
     @Override
     public Backend10_jobApplicants_adapter.CardViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -123,7 +125,7 @@ public class Backend10_jobApplicants_adapter extends RecyclerView.Adapter<Backen
         return applicants_list.size();
     }
     static class CardViewHolder extends RecyclerView.ViewHolder{
-        TextView b10_name, b10_status, b10_accept, b10_reject, b10_date, b10_reset;
+        TextView b10_name, b10_status, b10_accept, b10_reject, b10_date, b10_reset, b10_view_profile;
         @SuppressLint("UseSwitchCompatOrMaterialCode")
         Switch b10_switch;
         public CardViewHolder(@NonNull View itemView) {
@@ -135,6 +137,18 @@ public class Backend10_jobApplicants_adapter extends RecyclerView.Adapter<Backen
             b10_date = itemView.findViewById(R.id.card6_date);
             b10_reset = itemView.findViewById(R.id.card6_reset);
             b10_switch = itemView.findViewById(R.id.card6_Switch);
+            b10_view_profile = itemView.findViewById(R.id.card6_view_profile);
+
+            b10_view_profile.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    Backend10_jobApplicants_getterSetter data = applicants_list.get(position);
+                    Intent intent = new Intent(context, Backend13_ViewProfile.class);
+                    intent.putExtra("uid", data.getUser_id().trim());
+                    context.startActivity(intent);
+                }
+            });
 
         }
     }
@@ -166,6 +180,7 @@ public class Backend10_jobApplicants_adapter extends RecyclerView.Adapter<Backen
                 collection("Applied_Job").
                 document(u_id).update("status","accepted");
     }
+
     public void update_rejected(String u_id){
         Toast.makeText(context,"User Rejected",Toast.LENGTH_SHORT).show();
         FirebaseFirestore database;

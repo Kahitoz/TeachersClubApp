@@ -98,7 +98,6 @@ public class Backend5_jobApplied_Adapter extends RecyclerView.Adapter<Backend5_j
                 if (documentSnapshot != null) {
                     String title = documentSnapshot.getString("role");
                     String name = documentSnapshot.getString("company");
-
                     holder.b5_title.setText(title);
                     holder.b5_name.setText(name);
                 }
