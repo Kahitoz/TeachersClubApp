@@ -79,7 +79,6 @@ public class Backend5_jobAdded_Adapter extends RecyclerView.Adapter<Backend5_job
             b5_status = itemView.findViewById(R.id.card5_status);
             b5_status_handler = itemView.findViewById(R.id.card5_close);
             b5_view = itemView.findViewById(R.id.card5_view);
-
             b5_view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
