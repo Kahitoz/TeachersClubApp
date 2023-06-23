@@ -145,7 +145,7 @@ public class Backend10_jobApplicants_adapter extends RecyclerView.Adapter<Backen
                     int position = getAdapterPosition();
                     Backend10_jobApplicants_getterSetter data = applicants_list.get(position);
                     Intent intent = new Intent(context, Backend13_ViewProfile.class);
-                    intent.putExtra("uid", data.getUser_id());
+                    intent.putExtra("uid", data.getUser_id().trim());
                     context.startActivity(intent);
                 }
             });

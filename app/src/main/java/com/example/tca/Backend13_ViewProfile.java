@@ -3,9 +3,11 @@ package com.example.tca;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -29,6 +31,15 @@ public class Backend13_ViewProfile extends AppCompatActivity {
         b13_info = findViewById(R.id.ui13_info);
         b13_progress = findViewById(R.id.ui13_progress);
         b13_recycle = findViewById(R.id.ui13_recycle);
+
+        Intent intent = getIntent();
+        intent.getStringExtra("uid");
+
+        if(get_id!=null){
+
+        }else{
+            Toast.makeText(this, "Try again later", Toast.LENGTH_SHORT).show();
+        }
 
     }
 }
