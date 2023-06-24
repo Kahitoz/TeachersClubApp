@@ -14,7 +14,7 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import Shared.Backend11_Utils.Backend11_Applicant_chatHandler;
+import Shared.Backend11_Utils.Applicant.Backend11_Applicant_chatHandler;
 
 public class Backend11_MessageWindow extends AppCompatActivity {
     FirebaseAuth auth;
