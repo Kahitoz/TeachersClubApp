@@ -1,6 +1,7 @@
 package Shared.Backend5_utils.Backend5_jobsApplied;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.tca.Backend11_MessageWindow;
 import com.example.tca.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -22,8 +24,8 @@ import java.util.List;
 import Shared.Backend5_utils.Backend5_jobsApplied.Backend5_jobApplied_GetterSetter;
 
 public class Backend5_jobApplied_Adapter extends RecyclerView.Adapter<Backend5_jobApplied_Adapter.CardViewHolder> {
-    private final List<Backend5_jobApplied_GetterSetter> jobs_applied;
-    private Context context;
+    static List<Backend5_jobApplied_GetterSetter> jobs_applied;
+    static Context context;
 
     public Backend5_jobApplied_Adapter(List<Backend5_jobApplied_GetterSetter> jobs_applied, Context context) {
         this.jobs_applied = jobs_applied;
@@ -64,6 +66,23 @@ public class Backend5_jobApplied_Adapter extends RecyclerView.Adapter<Backend5_j
             b5_date = itemView.findViewById(R.id.notify_time);
             b5_view = itemView.findViewById(R.id.card5_view);
             b5_chat = itemView.findViewById(R.id.card4_chat);
+
+            b5_chat.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    Backend5_jobApplied_GetterSetter getData  = jobs_applied.get(position);
+                    String applicant_id = getData.getApplicant_id();
+                    String job_id = getData.getJob_id();
+                    String hire_id = getData.getHire_id();
+
+                    Intent intent = new Intent(context, Backend11_MessageWindow.class);
+                    intent.putExtra("applicant_id", applicant_id);
+                    intent.putExtra("job_id",job_id);
+                    intent.putExtra("hire_id", hire_id);
+                    context.startActivity(intent);
+                }
+            });
         }
     }
 
@@ -88,6 +107,7 @@ public class Backend5_jobApplied_Adapter extends RecyclerView.Adapter<Backend5_j
                         holder.b5_chat.setVisibility(View.VISIBLE);
                     }
                 }
+
             }
         });
 
@@ -101,6 +121,7 @@ public class Backend5_jobApplied_Adapter extends RecyclerView.Adapter<Backend5_j
                     holder.b5_title.setText(title);
                     holder.b5_name.setText(name);
                 }
+
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override

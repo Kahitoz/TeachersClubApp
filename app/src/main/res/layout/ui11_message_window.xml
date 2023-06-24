@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/background"
     tools:context=".Backend11_MessageWindow">
+
     <ImageView
         android:id="@+id/ui10_back"
         android:layout_width="30dp"
@@ -70,26 +71,26 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/shape_email_pass_shaper"
         android:hint="Write a message here"
-        android:layout_marginBottom="10dp"
         android:padding="7dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/ui11_send"
         app:layout_constraintStart_toStartOf="parent">
 
     </EditText>
 
     <ImageView
+        android:id="@+id/ui11_send"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="5dp"
+        android:contentDescription="@string/profile"
+        android:layout_marginEnd="10dp"
         android:src="@drawable/icon_send"
-        android:id="@+id/ui11_send"
         app:layout_constraintBottom_toBottomOf="@+id/ui11_input"
-        app:layout_constraintEnd_toEndOf="@+id/ui11_input"
-        app:layout_constraintTop_toTopOf="@+id/ui11_input"
-        android:contentDescription="@string/profile" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/ui11_input" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

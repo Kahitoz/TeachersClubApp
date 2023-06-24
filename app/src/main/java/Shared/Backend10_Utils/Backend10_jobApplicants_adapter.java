@@ -56,8 +56,10 @@ public class Backend10_jobApplicants_adapter extends RecyclerView.Adapter<Backen
         get_user_name(get_user_id, holder);
         String get_chat = get_data.getChat();
         if(get_chat.equals("open")){
+            holder.b10_message.setVisibility(View.VISIBLE);
             holder.b10_switch.setChecked(true);
         }else{
+            holder.b10_message.setVisibility(View.GONE);
             holder.b10_switch.setChecked(false);
         }
         holder.b10_status.setText(get_data.getStatus());
@@ -102,6 +104,7 @@ public class Backend10_jobApplicants_adapter extends RecyclerView.Adapter<Backen
             public void onClick(View v) {
                 holder.b10_status.setText("NA");
                 holder.b10_switch.setChecked(false);
+                holder.b10_message.setVisibility(View.GONE);
                 reset(get_uid);
             }
         });
@@ -112,8 +115,10 @@ public class Backend10_jobApplicants_adapter extends RecyclerView.Adapter<Backen
                 String uid = get_data.getDoc_id();
                 if (isChecked) {
                     chat_open(uid);
+                    holder.b10_message.setVisibility(View.VISIBLE);
                 } else {
                     chat_close(uid);
+                    holder.b10_message.setVisibility(View.GONE);
                 }
             }
         });
@@ -125,7 +130,7 @@ public class Backend10_jobApplicants_adapter extends RecyclerView.Adapter<Backen
         return applicants_list.size();
     }
     static class CardViewHolder extends RecyclerView.ViewHolder{
-        TextView b10_name, b10_status, b10_accept, b10_reject, b10_date, b10_reset, b10_view_profile;
+        TextView b10_name, b10_status, b10_accept, b10_reject, b10_date, b10_reset, b10_view_profile, b10_message;
         @SuppressLint("UseSwitchCompatOrMaterialCode")
         Switch b10_switch;
         public CardViewHolder(@NonNull View itemView) {
@@ -138,6 +143,7 @@ public class Backend10_jobApplicants_adapter extends RecyclerView.Adapter<Backen
             b10_reset = itemView.findViewById(R.id.card6_reset);
             b10_switch = itemView.findViewById(R.id.card6_Switch);
             b10_view_profile = itemView.findViewById(R.id.card6_view_profile);
+            b10_message = itemView.findViewById(R.id.card6_message);
 
             b10_view_profile.setOnClickListener(new View.OnClickListener() {
                 @Override
