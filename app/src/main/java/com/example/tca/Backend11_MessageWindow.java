@@ -58,6 +58,7 @@ public class Backend11_MessageWindow extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     handle.send_chat();
+                    handle.fetch_chat();
                 }
             });
         }else{

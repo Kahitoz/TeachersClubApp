@@ -20,10 +20,14 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FieldPath;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -71,39 +75,38 @@ public class Backend11_Applicant_chatHandler {
         });
     }
     public void send_chat() {
-                Toast.makeText(context,"sending", Toast.LENGTH_SHORT).show();
-                Get_Date get_date = new Get_Date();
-                String get_message = b11_message.getText().toString();
-                String date = get_date.getCurrentDate();
+        Toast.makeText(context,"sending", Toast.LENGTH_SHORT).show();
+        Get_Date get_date = new Get_Date();
+        String get_message = b11_message.getText().toString();
+        String date = get_date.getCurrentDate();
 
-                // Get the user's name asynchronously
-                get_name().thenAccept(name -> {
-                    if (get_message.length() == 0) {
-                        b11_message.setError("Cannot be blank");
-                    } else {
-                        Map<String, Object> chat = new HashMap<>();
-                        chat.put("date", date);
-                        chat.put("name", name);
-                        chat.put("message", get_message);
+        // Get the user's name asynchronously
+        get_name().thenAccept(name -> {
+            if (get_message.length() == 0) {
+                b11_message.setError("Cannot be blank");
+            } else {
+                Map<String, Object> chat = new HashMap<>();
+                chat.put("date", date);
+                chat.put("name", name);
+                chat.put("message", get_message);
+                chat.put("timestamp", FieldValue.serverTimestamp()); // Add timestamp field
 
-                        database.collection("users").document(hire_id)
-                                .collection("jobPosted").document(job_id)
-                                .collection("Applied_Job").document(applicant_id)
-                                .collection("chat").document().set(chat)
-                                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                    @Override
-                                    public void onSuccess(Void unused) {
-                                        Toast.makeText(context, "Message sent", Toast.LENGTH_SHORT).show();
-                                        b11_message.setText("");
-                                    }
-                                });
-                    }
-                }).exceptionally(ex -> {
-                    // Handle any errors retrieving the name
-                    ex.printStackTrace();
-                    return null;
-                });
+                database.collection("users").document(hire_id)
+                        .collection("jobPosted").document(job_id)
+                        .collection("Applied_Job").document(applicant_id)
+                        .collection("chat").add(chat) // Use add() instead of document()
+                        .addOnSuccessListener(documentReference -> {
+                            Toast.makeText(context, "Message sent", Toast.LENGTH_SHORT).show();
+                            b11_message.setText("");
+                        });
             }
+        }).exceptionally(ex -> {
+            // Handle any errors retrieving the name
+            ex.printStackTrace();
+            return null;
+        });
+    }
+
 
     public CompletableFuture<String> get_name() {
         CompletableFuture<String> future = new CompletableFuture<>();
@@ -127,12 +130,13 @@ public class Backend11_Applicant_chatHandler {
 
         return future;
     }
-
-    public void fetch_chat(){
+    public void fetch_chat() {
         database.collection("users").document(hire_id)
                 .collection("jobPosted").document(job_id)
                 .collection("Applied_Job").document(applicant_id)
-                .collection("chat").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                .collection("chat")
+                .orderBy("timestamp") // Order the documents by the "timestamp" field in ascending order
+                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
@@ -152,11 +156,13 @@ public class Backend11_Applicant_chatHandler {
                         b11_progress.setVisibility(View.GONE);
                     }
                 }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(context,e.getMessage(),Toast.LENGTH_SHORT).show();
-                b11_progress.setVisibility(View.GONE);
-            }
-        });
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
+                        b11_progress.setVisibility(View.GONE);
+                    }
+                });
     }
+
+
 }
