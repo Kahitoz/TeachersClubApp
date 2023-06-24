@@ -125,7 +125,9 @@ public class Backend9_Data_Retrieval {
                                                     data.put("date", date);
                                                     data.put("chat", "close");
                                                     data.put("status", "NA");
-                                                    database.collection("users").document(user_id).collection("jobPosted").document(doc_id).collection("Applied_Job").add(data).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                                                    database.collection("users").document(user_id).
+                                                            collection("jobPosted").document(doc_id).
+                                                            collection("Applied_Job").add(data).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                                                         @Override
                                                         public void onComplete(@NonNull Task<DocumentReference> task) {
                                                             if (task.isSuccessful()) {
@@ -140,6 +142,13 @@ public class Backend9_Data_Retrieval {
                                                                 job_id.put("job_id", doc_id);
                                                                 job_id.put("hire_id", user_id);
                                                                 job_id.put("applicant_id",applicant_id);
+
+                                                                HashMap<String, Object> notify_1 = new HashMap<>();
+                                                                notify_1.put("message", "Someone has applied for the job");
+                                                                notify_1.put("job_id", doc_id);
+                                                                notify_1.put("date", date);
+
+                                                                database.collection("users").document(user_id).set(notify_1);
                                                                 database.collection("users").document(auth.getUid()).collection("jobApplied").document(doc_id).set(job_id).addOnCompleteListener(new OnCompleteListener<Void>() {
                                                                     @Override
                                                                     public void onComplete(@NonNull Task<Void> task) {
