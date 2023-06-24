@@ -1,6 +1,7 @@
 package com.example.tca;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,6 +22,7 @@ public class Backend11_MessageWindow extends AppCompatActivity {
     ImageView b11_back, b11_send;
     ProgressBar b11_progress;
     EditText b11_message;
+    RecyclerView b11_recycle;
 
     String applicant_id, job_id, hire_id;
 
@@ -34,6 +36,7 @@ public class Backend11_MessageWindow extends AppCompatActivity {
         b11_send = findViewById(R.id.ui11_send);
         b11_progress = findViewById(R.id.ui11_progress);
         b11_message = findViewById(R.id.ui11_input);
+        b11_recycle = findViewById(R.id.ui11_message);
 
         Intent intent = getIntent();
         applicant_id = intent.getStringExtra("applicant_id");
@@ -42,7 +45,8 @@ public class Backend11_MessageWindow extends AppCompatActivity {
 
         if(applicant_id!=null&&job_id!=null&&hire_id!=null){
             Backend11_Applicant_chatHandler handle = new Backend11_Applicant_chatHandler(this, auth, database,b11_back,
-                    b11_send, b11_progress, b11_message, applicant_id, job_id, hire_id);
+                    b11_send, b11_progress, b11_message,b11_recycle, applicant_id, job_id, hire_id);
+            handle.fetch_chat();
             b11_back.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
