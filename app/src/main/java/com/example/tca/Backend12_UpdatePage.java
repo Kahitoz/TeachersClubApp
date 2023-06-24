@@ -55,7 +55,7 @@ public class Backend12_UpdatePage extends AppCompatActivity {
                         String link = snapshot.getString("link");
                         String type = snapshot.getString("type");
                         if(App_Version.equals(version)&& !Objects.equals(type, "urgent")){
-                            startActivity(new Intent(getApplicationContext(), Backend5_Profile.class));
+                            startActivity(new Intent(getApplicationContext(), Backend2_Dashboard.class));
                         }else {
                             assert type != null;
                             if(type.equals("urgent")&&!App_Version.equals(version)){
