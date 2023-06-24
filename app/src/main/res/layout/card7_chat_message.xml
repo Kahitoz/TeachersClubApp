@@ -3,22 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@drawable/shape_card_shaper"
+    android:background="#FAEEEE"
     android:layout_height="wrap_content">
-
-    <ImageView
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:background="@drawable/shape_image_view_shaper"
-        android:src="@drawable/icon_person"
-        android:layout_marginTop="10dp"
-        android:id="@+id/card7_image"
-        android:layout_marginStart="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/profile">
-
-    </ImageView>
 
     <TextView
         android:layout_width="wrap_content"
@@ -37,20 +23,47 @@
         android:layout_height="wrap_content"
         android:text="@string/profile"
         android:layout_marginStart="10dp"
-        android:textSize="18sp"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="@+id/card7_image"
-        app:layout_constraintStart_toEndOf="@+id/card7_image"
-        app:layout_constraintTop_toTopOf="@+id/card7_image" />
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/imageView13"
+        app:layout_constraintTop_toTopOf="@+id/card7_status" />
 
     <TextView
-        android:layout_width="61dp"
-        android:layout_height="21dp"
-        android:text="@string/card7_4"
         android:id="@+id/card7_message"
-        android:layout_marginTop="10dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/card7_4"
         android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="@+id/card7_image"
-        app:layout_constraintTop_toBottomOf="@+id/card7_image" />
+        app:layout_constraintEnd_toEndOf="@+id/card7_status"
+        app:layout_constraintStart_toStartOf="@+id/card7_name"
+        app:layout_constraintTop_toBottomOf="@+id/card7_name" />
+
+    <ImageView
+        android:id="@+id/imageView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/icon_start"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/card7_status" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:layout_width="2dp"
+        android:layout_height="0dp"
+        android:background="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/imageView13"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView13" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainerView"
+        android:layout_width="2dp"
+        android:layout_height="0dp"
+        android:background="@color/black"
+
+        app:layout_constraintBottom_toTopOf="@+id/imageView13"
+        app:layout_constraintEnd_toEndOf="@+id/imageView13"
+        app:layout_constraintStart_toStartOf="@+id/imageView13"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
