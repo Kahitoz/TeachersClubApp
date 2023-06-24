@@ -15,6 +15,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class Backend1_Login extends AppCompatActivity {
 
@@ -78,5 +79,16 @@ public class Backend1_Login extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseAuth auth1 = FirebaseAuth.getInstance();
+        FirebaseUser user = auth1.getCurrentUser();
+        if(user!=null){
+            startActivity(new Intent(getApplicationContext(), Backend12_UpdatePage.class));
+            finish();
+        }
     }
 }
