@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:text="@string/ui12_1"
         android:id="@+id/ui12_heading"
+        android:visibility="invisible"
         android:textColor="@color/heading"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -24,6 +25,7 @@
         android:layout_width="0dp"
         android:padding="10dp"
         android:layout_height="wrap_content"
+        android:visibility="invisible"
         android:layout_marginTop="10dp"
         android:text="@string/ui12_2"
         android:textColor="@color/black"
@@ -38,6 +40,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/icon_forward"
+        android:visibility="invisible"
         android:layout_marginEnd="10dp"
         android:layout_marginTop="2dp"
         android:id="@+id/ui12_forward"
@@ -53,6 +56,7 @@
         android:id="@+id/ui12_update"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginBottom="10dp"
         app:layout_constraintStart_toStartOf="parent">
@@ -69,6 +73,17 @@
 
     </ProgressBar>
 
+    <TextView
+        android:id="@+id/ui12_checkUpdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="checking for update"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/ui12_progress"
+        app:layout_constraintStart_toStartOf="@+id/ui12_progress"
+        app:layout_constraintTop_toBottomOf="@+id/ui12_progress">
+
+    </TextView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

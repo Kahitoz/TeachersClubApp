@@ -28,7 +28,7 @@ public class Backend12_UpdatePage extends AppCompatActivity {
     FirebaseFirestore database;
     ImageView b12_forward;
     ProgressBar b12_progress;
-    TextView b12_text;
+    TextView b12_text, b12_checkUpdate, b12_heading;
     Button b12_update;
 
     @SuppressLint("MissingInflatedId")
@@ -41,6 +41,8 @@ public class Backend12_UpdatePage extends AppCompatActivity {
         b12_forward = findViewById(R.id.ui12_forward);
         b12_text = findViewById(R.id.ui12_message);
         b12_update = findViewById(R.id.ui12_update);
+        b12_checkUpdate = findViewById(R.id.ui12_checkUpdate);
+        b12_heading = findViewById(R.id.ui12_heading);
         database.collection("GlobalUpdate").document("message").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -59,6 +61,9 @@ public class Backend12_UpdatePage extends AppCompatActivity {
                             if(type.equals("urgent")&&!App_Version.equals(version)){
                                 b12_forward.setVisibility(View.GONE);
                                 b12_text.setText(message);
+                                b12_text.setVisibility(View.VISIBLE);
+                                b12_heading.setVisibility(View.VISIBLE);
+                                b12_update.setVisibility(View.VISIBLE);
                                 b12_update.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
@@ -68,6 +73,10 @@ public class Backend12_UpdatePage extends AppCompatActivity {
                                 });
 
                             }else {
+                                b12_text.setVisibility(View.VISIBLE);
+                                b12_heading.setVisibility(View.VISIBLE);
+                                b12_update.setVisibility(View.VISIBLE);
+                                b12_forward.setVisibility(View.VISIBLE);
                                 b12_text.setText(message);
                                 b12_update.setOnClickListener(new View.OnClickListener() {
                                     @Override
