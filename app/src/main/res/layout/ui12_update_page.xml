@@ -21,13 +21,14 @@
 
     <TextView
         android:id="@+id/ui12_message"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
+        android:padding="10dp"
         android:layout_height="wrap_content"
-        android:text="@string/ui12_2"
         android:layout_marginTop="10dp"
-        android:layout_marginStart="10dp"
+        android:text="@string/ui12_2"
         android:textColor="@color/black"
         android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ui12_heading">
 
@@ -49,6 +50,7 @@
         android:layout_height="wrap_content"
         android:background="@color/blue"
         android:text="@string/ui12_3"
+        android:id="@+id/ui12_update"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
