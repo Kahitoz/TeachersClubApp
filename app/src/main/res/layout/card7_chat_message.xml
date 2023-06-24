@@ -24,7 +24,7 @@
         android:text="@string/profile"
         android:layout_marginStart="10dp"
         android:textColor="@color/black"
-        android:textSize="18sp"
+        android:textSize="12sp"
         app:layout_constraintStart_toEndOf="@+id/imageView13"
         app:layout_constraintTop_toTopOf="@+id/card7_status" />
 
@@ -33,6 +33,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/card7_4"
+        android:textSize="16sp"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="@+id/card7_status"
         app:layout_constraintStart_toStartOf="@+id/card7_name"
@@ -40,8 +41,8 @@
 
     <ImageView
         android:id="@+id/imageView13"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
         android:src="@drawable/icon_start"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/card7_status" />
