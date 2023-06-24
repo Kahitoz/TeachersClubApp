@@ -125,6 +125,7 @@ public class Backend9_Data_Retrieval {
                                                     data.put("date", date);
                                                     data.put("chat", "close");
                                                     data.put("status", "NA");
+                                                    data.put("doc_id","");
                                                     database.collection("users").document(user_id).
                                                             collection("jobPosted").document(doc_id).
                                                             collection("Applied_Job").add(data).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
@@ -133,6 +134,11 @@ public class Backend9_Data_Retrieval {
                                                             if (task.isSuccessful()) {
                                                                 DocumentReference documentReference = task.getResult();
                                                                 String applicant_id = documentReference.getId();
+                                                                String documentId = documentReference.getId();
+                                                                DocumentReference jobDocRef = database.collection("users").document(user_id).
+                                                                        collection("jobPosted").document(doc_id).
+                                                                        collection("Applied_Job").document(documentId);
+                                                                        jobDocRef.update("doc_id", documentId);
                                                                 HashMap<String, Object> notify = new HashMap<>();
                                                                 notify.put("message", "You have applied for a new job");
                                                                 notify.put("job_id", doc_id);

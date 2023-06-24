@@ -16,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tca.Backend10_JobApplicants;
+import com.example.tca.Backend11_MessageWindow;
 import com.example.tca.Backend13_ViewProfile;
 import com.example.tca.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -31,7 +32,7 @@ import java.util.Objects;
 
 public class Backend10_jobApplicants_adapter extends RecyclerView.Adapter<Backend10_jobApplicants_adapter.CardViewHolder> {
     static Context context;
-    String job_id;
+    static String job_id;
     static List<Backend10_jobApplicants_getterSetter> applicants_list;
     public Backend10_jobApplicants_adapter(Context context, List<Backend10_jobApplicants_getterSetter> applicants_list, String job_id) {
         this.context = context;
@@ -155,6 +156,22 @@ public class Backend10_jobApplicants_adapter extends RecyclerView.Adapter<Backen
                     context.startActivity(intent);
                 }
             });
+
+            b10_message.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    Backend10_jobApplicants_getterSetter data = applicants_list.get(position);
+                    Intent intent = new Intent(context, Backend11_MessageWindow.class);
+                    String r_doc_id = data.getDoc_id();
+                    intent.putExtra("r_doc_id",r_doc_id);
+                    intent.putExtra("r_user_id",job_id);
+                    context.startActivity(intent);
+
+                }
+            });
+
+
 
         }
     }

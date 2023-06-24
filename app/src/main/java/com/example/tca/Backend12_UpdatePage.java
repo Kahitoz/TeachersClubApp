@@ -54,11 +54,11 @@ public class Backend12_UpdatePage extends AppCompatActivity {
                         String message = snapshot.getString("message");
                         String link = snapshot.getString("link");
                         String type = snapshot.getString("type");
-                        if(App_Version.equals(version)&& !Objects.equals(type, "urgent")){
+                        if(App_Version.equals(version)){
                             startActivity(new Intent(getApplicationContext(), Backend2_Dashboard.class));
                         }else {
                             assert type != null;
-                            if(type.equals("urgent")&&!App_Version.equals(version)){
+                            if(type.equals("urgent")){
                                 b12_forward.setVisibility(View.GONE);
                                 b12_text.setText(message);
                                 b12_text.setVisibility(View.VISIBLE);
@@ -91,8 +91,5 @@ public class Backend12_UpdatePage extends AppCompatActivity {
                 }
             }
         });
-
-
-
     }
 }

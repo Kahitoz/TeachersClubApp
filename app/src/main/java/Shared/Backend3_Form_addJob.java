@@ -8,6 +8,7 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.text.SimpleDateFormat;
@@ -134,14 +135,19 @@ public class Backend3_Form_addJob {
             CollectionReference jobPostedRef = database.collection("users").document(userId).collection("jobPosted");
             jobPostedRef.add(jobMap)
                     .addOnSuccessListener(documentReference -> {
-                        String document_id = documentReference.getId();
-                        jobMap.put("doc_id",document_id);
-                        Toast.makeText(context, "Job created successfully", Toast.LENGTH_SHORT).show();
-                        clearForm();
+                        String documentId = documentReference.getId();
+                        DocumentReference jobDocRef = jobPostedRef.document(documentId);
+                        jobDocRef.update("doc_id", documentId)
+                                .addOnSuccessListener(aVoid -> {
+                                    Toast.makeText(context, "Job created successfully", Toast.LENGTH_SHORT).show();
+                                    clearForm();
+                                })
+                                .addOnFailureListener(e -> Toast.makeText(context, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show());
                     })
                     .addOnFailureListener(e -> Toast.makeText(context, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show());
         }
     }
+
 
     private void clearForm() {
         stateSpinner.setSelection(0);

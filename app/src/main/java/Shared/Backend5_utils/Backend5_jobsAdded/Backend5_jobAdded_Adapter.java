@@ -96,16 +96,25 @@ public class Backend5_jobAdded_Adapter extends RecyclerView.Adapter<Backend5_job
                 public void onClick(View v) {
                     int position = getAdapterPosition();
                     Backend5_get_set_jobAdded jobAdded2 = jobAdded.get(position);
-                    String job_id = jobAdded2.getDoc_id().trim();
+                    String job_id = jobAdded2.getDoc_id();
 
-                    // Check the current status
-                    String currentStatus = jobAdded2.getStatus();
-                    String newStatus = currentStatus.equals("close") ? "open" : "close";
+                    if (job_id != null) {
+                        job_id = job_id.trim();
 
-                    // Update the status in the database
-                    updateJobStatus(job_id, newStatus);
+
+                        // Check the current status
+                        String currentStatus = jobAdded2.getStatus();
+                        String newStatus = currentStatus.equals("close") ? "open" : "close";
+
+                        // Update the status in the database
+                        updateJobStatus(job_id, newStatus);
+                    }
+                    else{
+                        Toast.makeText(context, "JobId  null", Toast.LENGTH_SHORT).show();
+                    }
                 }
             });
+
         }
     }
 
