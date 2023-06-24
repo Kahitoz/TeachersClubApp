@@ -54,26 +54,29 @@ public class Backend12_UpdatePage extends AppCompatActivity {
                         String type = snapshot.getString("type");
                         if(App_Version.equals(version)&& !Objects.equals(type, "urgent")){
                             startActivity(new Intent(getApplicationContext(), Backend5_Profile.class));
-                        }else if(type.equals("urgent")&&!App_Version.equals(version)){
-                            b12_forward.setVisibility(View.GONE);
-                            b12_text.setText(message);
-                            b12_update.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
-                                    startActivity(browserIntent);
-                                }
-                            });
-
                         }else {
-                            b12_text.setText(message);
-                            b12_update.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
-                                    startActivity(browserIntent);
-                                }
-                            });
+                            assert type != null;
+                            if(type.equals("urgent")&&!App_Version.equals(version)){
+                                b12_forward.setVisibility(View.GONE);
+                                b12_text.setText(message);
+                                b12_update.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
+                                        startActivity(browserIntent);
+                                    }
+                                });
+
+                            }else {
+                                b12_text.setText(message);
+                                b12_update.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
+                                        startActivity(browserIntent);
+                                    }
+                                });
+                            }
                         }
                     }
                 }
