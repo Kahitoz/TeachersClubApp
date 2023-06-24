@@ -148,7 +148,7 @@ public class Backend9_Data_Retrieval {
                                                                 notify_1.put("job_id", doc_id);
                                                                 notify_1.put("date", date);
 
-                                                                database.collection("users").document(user_id).set(notify_1);
+                                                                database.collection("users").document(user_id).collection("notification").add(notify_1);
                                                                 database.collection("users").document(auth.getUid()).collection("jobApplied").document(doc_id).set(job_id).addOnCompleteListener(new OnCompleteListener<Void>() {
                                                                     @Override
                                                                     public void onComplete(@NonNull Task<Void> task) {
