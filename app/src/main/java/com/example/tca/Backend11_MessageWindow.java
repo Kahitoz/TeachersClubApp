@@ -15,6 +15,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import Shared.Backend11_Utils.Applicant.Backend11_Applicant_chatHandler;
+import Shared.Backend11_Utils.Hire.Backend11_Hire_Handler;
 
 public class Backend11_MessageWindow extends AppCompatActivity {
     FirebaseAuth auth;
@@ -23,7 +24,7 @@ public class Backend11_MessageWindow extends AppCompatActivity {
     ProgressBar b11_progress;
     EditText b11_message;
     RecyclerView b11_recycle;
-
+String r_doc_id,r_user_id;
     String applicant_id, job_id, hire_id;
 
     @Override
@@ -42,6 +43,8 @@ public class Backend11_MessageWindow extends AppCompatActivity {
         applicant_id = intent.getStringExtra("applicant_id");
         job_id = intent.getStringExtra("job_id");
         hire_id = intent.getStringExtra("hire_id");
+        r_doc_id=intent.getStringExtra("r_doc_id");
+        r_user_id=intent.getStringExtra("r_user_id");
 
         if(applicant_id!=null&&job_id!=null&&hire_id!=null){
             Backend11_Applicant_chatHandler handle = new Backend11_Applicant_chatHandler(this, auth, database,b11_back,
@@ -61,7 +64,27 @@ public class Backend11_MessageWindow extends AppCompatActivity {
                     handle.fetch_chat();
                 }
             });
-        }else{
+        }else  if(r_doc_id!=null&&r_user_id!=null){
+            Backend11_Hire_Handler handler = new Backend11_Hire_Handler(this, auth, database,b11_back,
+                    b11_send, b11_progress, b11_message,b11_recycle, r_doc_id, r_user_id);
+            handler.fetch_chat();
+            b11_back.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(getApplicationContext(), Backend10_JobApplicants.class));
+                    finish();
+                }
+            });
+            b11_send.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    handler.send_chat();
+                    handler.fetch_chat();
+                }
+            });
+            handler.send_chat();
+        }
+        else{
             Toast.makeText(getApplicationContext(), "Req null", Toast.LENGTH_SHORT).show();
         }
 

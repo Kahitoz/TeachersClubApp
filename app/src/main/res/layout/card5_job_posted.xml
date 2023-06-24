@@ -49,6 +49,7 @@
             android:id="@+id/notify_time"
             android:layout_marginEnd="10dp"
             android:textColor="@color/black"
+            android:textSize="10dp"
             android:layout_marginTop="2dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
