@@ -1,4 +1,4 @@
-package Shared.Backend11_Utils;
+package Shared.Backend11_Utils.Applicant;
 
 public class Backend11_Applicant_getSet {
     String name, date, message;

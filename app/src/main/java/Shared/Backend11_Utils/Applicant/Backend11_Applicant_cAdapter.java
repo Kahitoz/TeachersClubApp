@@ -1,4 +1,4 @@
-package Shared.Backend11_Utils;
+package Shared.Backend11_Utils.Applicant;
 
 import android.view.LayoutInflater;
 import android.view.View;

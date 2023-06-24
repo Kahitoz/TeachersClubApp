@@ -1,4 +1,4 @@
-package Shared.Backend11_Utils;
+package Shared.Backend11_Utils.Applicant;
 
 import android.app.Activity;
 import android.content.Context;
@@ -16,26 +16,20 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.tca.Backend5_Profile;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FieldPath;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 
-import Shared.Backend5_utils.Backend5_jobsAdded.Backend5_get_set_jobAdded;
-import Shared.Backend5_utils.Backend5_jobsAdded.Backend5_jobAdded_Adapter;
 import Shared.Get_Date;
 
 public class Backend11_Applicant_chatHandler {
